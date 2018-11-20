@@ -1,0 +1,36 @@
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll.config
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.pdb
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.xml
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csprojAssemblyReference.cache
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CoreCompileInputs.cache
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll.config
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.xml
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csprojAssemblyReference.cache
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CoreCompileInputs.cache
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll.config
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.pdb
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.dll
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.xml
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csprojAssemblyReference.cache
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CoreCompileInputs.cache
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
+D:\MonHoc\3f_DuAnDau\CentManagerment\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb

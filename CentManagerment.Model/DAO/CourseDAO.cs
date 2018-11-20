@@ -1,0 +1,52 @@
+﻿using CentManagerment.Model.EF;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CentManagerment.Model.DAO
+{
+    public class CourseDAO
+    {
+        CentManagermentEntities db = null;
+        // use using to open and close connection
+        public bool Insert(Course course)
+        {
+            using (db = new CentManagermentEntities())
+            {
+                db.Course.Add(course);
+                db.SaveChanges();
+            }
+            return true;
+
+
+        }
+        // use using to open and close connection
+        public bool Update(Course course)
+        {
+            using (db = new CentManagermentEntities())
+            {
+                var courseUpdate = db.Course.FirstOrDefault(x=>x.CourseId == course.CourseId);
+                courseUpdate.CourseName = course.CourseName;
+                courseUpdate.CourseTime = course.CourseTime;
+                courseUpdate.CousePrice = course.CousePrice;
+                db.SaveChanges();
+            }
+            return true;
+
+        }
+        // use using to open and close connection
+        public bool Delete(Course course)
+        {
+            using (db = new CentManagermentEntities())
+            {
+                db.Course.Remove(course);
+                db.SaveChanges();
+            }
+            return true;
+
+
+        }
+    }
+}
