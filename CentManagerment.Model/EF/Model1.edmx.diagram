@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fc57c903a0a48bfa6394ee1ce9b8e65" Name="Diagram1">
+        <EntityTypeShape EntityType="CentManagermentModel.Class" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="CentManagermentModel.Course" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="CentManagermentModel.Expenditure" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="CentManagermentModel.News" Width="1.5" PointX="10" PointY="5" />
+        <EntityTypeShape EntityType="CentManagermentModel.Revenue" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="CentManagermentModel.Role" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CentManagermentModel.RoleManager" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="CentManagermentModel.Student" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="CentManagermentModel.Teacher" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="CentManagermentModel.UserManager" Width="1.5" PointX="7.75" PointY="5.125" />
+        <AssociationConnector Association="CentManagermentModel.FK_Classes_Courses" />
+        <AssociationConnector Association="CentManagermentModel.FK_Students_Classes" />
+        <AssociationConnector Association="CentManagermentModel.FK_Revenue_Expenditure" />
+        <AssociationConnector Association="CentManagermentModel.FK_News_Users" />
+        <AssociationConnector Association="CentManagermentModel.FK_Revenues_Students" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

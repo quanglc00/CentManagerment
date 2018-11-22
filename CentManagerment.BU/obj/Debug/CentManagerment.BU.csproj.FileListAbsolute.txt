@@ -1,0 +1,24 @@
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.pdb
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csprojAssemblyReference.cache
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CoreCompileInputs.cache
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.pdb
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.dll
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.pdb
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll.config
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.xml
+D:\App\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.pdb
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll.config
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.xml
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csprojAssemblyReference.cache
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CoreCompileInputs.cache
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.dll
+C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.pdb
