@@ -22,3 +22,15 @@ C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Mod
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll.config
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.xml
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csprojAssemblyReference.cache
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CoreCompileInputs.cache
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb

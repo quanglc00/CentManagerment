@@ -22,3 +22,15 @@ C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CopyComplete
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.dll
 C:\Users\Simplify V2\Desktop\CentManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.BU.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\CentManagerment.Model.dll.config
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\EntityFramework.xml
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csprojAssemblyReference.cache
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CoreCompileInputs.cache
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.pdb
