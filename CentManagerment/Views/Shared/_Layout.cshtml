@@ -263,25 +263,26 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 search-course-right section-gap">
-                    <form class="form-wrap" action="#">
+                    @using (Html.BeginForm("SendEmail", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-wrap" }))
+                    {
+                        @Html.AntiForgeryToken()
                         <h4 class="text-white pb-20 text-center mb-30">Liên hệ ngay với chúng tôi</h4>
                         <input type="text" class="form-control" name="name" placeholder="Your Name" onfocus="this.placeholder = ''"
                                onblur="this.placeholder = 'Your Name'">
-                        <input type="phone" class="form-control" name="phone" placeholder="Your Phone Number" onfocus="this.placeholder = ''"
+                        <input type="number" class="form-control" name="phone" placeholder="Your Phone Number" onfocus="this.placeholder = ''"
                                onblur="this.placeholder = 'Your Phone Number'">
                         <input type="email" class="form-control" name="email" placeholder="Your Email Address" onfocus="this.placeholder = ''"
                                onblur="this.placeholder = 'Your Email Address'">
                         <div class="form-select" id="service-select">
-                            <select>
-                                <option datd-display="">Chọn khóa học</option>
-                                <option value="1">Khóa học N2</option>
-                                <option value="2">Khóa học N3</option>
-                                <option value="3">Khóa học N4</option>
-                                <option value="4">Khóa học N5</option>
+                            <select name="course">
+                                <option value="2"> Khóa học N2</option>
+                                <option value="3"> Khóa học N3</option>
+                                <option value="4"> Khóa học N4</option>
+                                <option value="5"> Khóa học N5</option>
                             </select>
                         </div>
-                        <button class="primary-btn text-uppercase">Gửi</button>
-                    </form>
+                        <button class="primary-btn text-uppercase" id="sendrequest">Gửi</button>
+                    }
                 </div>
             </div>
         </div>
