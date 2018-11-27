@@ -24,6 +24,10 @@ namespace CentManagerment.Model.EF
         public string StudentName { get; set; }
         public Nullable<int> StudentMark { get; set; }
         public Nullable<int> StudentClassID { get; set; }
+        public Nullable<double> StudentSchoolFee { get; set; }
+        public string StudentEmail { get; set; }
+        public string StudentPhone { get; set; }
+        public string StudentAdress { get; set; }
     
         public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

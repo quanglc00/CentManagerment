@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,6 +163,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\admin\fonts\flaticon.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Black.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BlackItalic.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Bold.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BoldItalic.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLight.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLightItalic.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Italic.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Light.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-LightItalic.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Regular.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBold.svg" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.svg" />
     <Content Include="Assets\admin\images\avatar.png" />
     <Content Include="Assets\admin\images\avatar04.png" />
     <Content Include="Assets\admin\images\avatar2.png" />
@@ -194,7 +213,8 @@
     <Content Include="Assets\admin\images\vip1.png" />
     <Content Include="Assets\admin\images\vipd.png" />
     <Content Include="Assets\admin\images\vipdb.png" />
-    <Content Include="Assets\admin\js\script.js" />
+    <Content Include="Assets\admin\js\dat.js" />
+    <Content Include="Assets\admin\js\JavaScript.js" />
     <Content Include="Assets\admin\js\validation.js" />
     <Content Include="Assets\admin\libs\abc\jquery.min.js" />
     <Content Include="Assets\admin\libs\adminlte\adminlte.min.js" />
@@ -1838,6 +1858,58 @@
     <Content Include="Assets\admin\libs\jquery-slimscroll\package.json" />
     <Content Include="Assets\admin\libs\jquery-slimscroll\README.md" />
     <Content Include="Areas\Admin\Views\StudentManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\StudentManagerment\AddStudent.cshtml" />
+    <Content Include="Assets\admin\fonts\flaticon.eot" />
+    <Content Include="Assets\admin\fonts\flaticon.ttf" />
+    <Content Include="Assets\admin\fonts\flaticon.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Black.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Black.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Black.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Black.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BlackItalic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BlackItalic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BlackItalic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BlackItalic.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Bold.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Bold.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Bold.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Bold.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BoldItalic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BoldItalic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BoldItalic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-BoldItalic.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLight.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLight.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLight.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLight.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLightItalic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLightItalic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLightItalic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-ExtraLightItalic.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Italic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Italic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Italic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Italic.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Light.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Light.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Light.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Light.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-LightItalic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-LightItalic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-LightItalic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-LightItalic.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Regular.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Regular.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Regular.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-Regular.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBold.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBold.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBold.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBold.woff2" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.eot" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.ttf" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.woff" />
+    <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

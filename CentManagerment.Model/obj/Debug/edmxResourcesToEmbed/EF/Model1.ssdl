@@ -70,6 +70,10 @@
     <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
     <Property Name="StudentMark" Type="int" />
     <Property Name="StudentClassID" Type="int" />
+    <Property Name="StudentSchoolFee" Type="float" />
+    <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
+    <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
+    <Property Name="StudentAdress" Type="ntext" />
   </EntityType>
   <EntityType Name="Teacher">
     <Key>
