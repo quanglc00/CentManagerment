@@ -15,7 +15,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.RoleManager.Add(roleManager);
+                db.RoleManagers.Add(roleManager);
                 db.SaveChanges();
             }
             return true;
@@ -27,7 +27,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var roleManagerUpdate = db.RoleManager.FirstOrDefault(x => x.RoleManagerId == roleManager.RoleManagerId);
+                var roleManagerUpdate = db.RoleManagers.FirstOrDefault(x => x.RoleManagerId == roleManager.RoleManagerId);
                 roleManagerUpdate.RoleManagerRoleId = roleManager.RoleManagerRoleId;
                 roleManagerUpdate.RoleManagerUserId = roleManager.RoleManagerUserId;
                 db.SaveChanges();
@@ -41,7 +41,7 @@ namespace CentManagerment.Model.DAO
         {
                 using (db = new CentManagermentEntities())
                 {
-                db.RoleManager.Remove(roleManager);
+                db.RoleManagers.Remove(roleManager);
                 db.SaveChanges();
             }
             return true;

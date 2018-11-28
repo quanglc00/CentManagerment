@@ -17,7 +17,7 @@ namespace CentManagerment.Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Expenditure()
         {
-            this.Revenue = new HashSet<Revenue>();
+            this.Revenues = new HashSet<Revenue>();
         }
     
         public int ExpenditureId { get; set; }
@@ -25,6 +25,6 @@ namespace CentManagerment.Model.EF
         public Nullable<int> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Revenue> Revenue { get; set; }
+        public virtual ICollection<Revenue> Revenues { get; set; }
     }
 }

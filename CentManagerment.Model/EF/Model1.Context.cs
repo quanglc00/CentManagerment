@@ -25,15 +25,15 @@ namespace CentManagerment.Model.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Class> Class { get; set; }
-        public virtual DbSet<Course> Course { get; set; }
-        public virtual DbSet<Expenditure> Expenditure { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Expenditure> Expenditures { get; set; }
         public virtual DbSet<News> News { get; set; }
-        public virtual DbSet<Revenue> Revenue { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<RoleManager> RoleManager { get; set; }
-        public virtual DbSet<Student> Student { get; set; }
-        public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<UserManager> UserManager { get; set; }
+        public virtual DbSet<Revenue> Revenues { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<RoleManager> RoleManagers { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<UserManager> UserManagers { get; set; }
     }
 }

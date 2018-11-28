@@ -18,7 +18,7 @@ namespace CentManagerment.Model.DAO
         {
             using ( db = new CentManagermentEntities())
             {
-                db.Class.Add(cl);
+                db.Classes.Add(cl);
                 db.SaveChanges();
             }
             return true;
@@ -29,7 +29,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var clUpdate = db.Class.FirstOrDefault(x => x.ClassId == cl.ClassId);
+                var clUpdate = db.Classes.FirstOrDefault(x => x.ClassId == cl.ClassId);
                 clUpdate.ClassName = cl.ClassName;
                 clUpdate.ClassAmountStudent = cl.ClassAmountStudent;
                 clUpdate.ClassCourseId = cl.ClassCourseId;
@@ -44,7 +44,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Class.Remove(cl);
+                db.Classes.Remove(cl);
                 db.SaveChanges();
             }
             return true;

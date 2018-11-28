@@ -15,7 +15,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Revenue.Add(revenue);
+                db.Revenues.Add(revenue);
                 db.SaveChanges();
                 return true;
             }
@@ -26,7 +26,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var revenueUpdate = db.Revenue.FirstOrDefault(x => x.RevenueId == revenue.RevenueId);
+                var revenueUpdate = db.Revenues.FirstOrDefault(x => x.RevenueId == revenue.RevenueId);
                 revenueUpdate.RevenuePrice = revenue.RevenuePrice;
                 revenueUpdate.RevenueStartPaymentDay = revenue.RevenueStartPaymentDay;
                 revenueUpdate.RevenueStudentId = revenue.RevenueStudentId;
@@ -41,7 +41,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Revenue.Remove(revenue);
+                db.Revenues.Remove(revenue);
                 db.SaveChanges();
             }
             return true;

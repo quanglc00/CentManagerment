@@ -17,7 +17,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Expenditure.Add(expenditure);
+                db.Expenditures.Add(expenditure);
                 db.SaveChanges();
                 return true;
             }
@@ -29,7 +29,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var expenditureUpdate = db.Expenditure.FirstOrDefault(x => x.ExpenditureId == expenditure.ExpenditureId);
+                var expenditureUpdate = db.Expenditures.FirstOrDefault(x => x.ExpenditureId == expenditure.ExpenditureId);
                 expenditureUpdate.ExpenditureName = expenditure.ExpenditureName;
                 expenditureUpdate.Price = expenditure.Price;
                 db.SaveChanges();
@@ -43,7 +43,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Expenditure.Remove(expenditure);
+                db.Expenditures.Remove(expenditure);
                 db.SaveChanges();
                 return true;
             }

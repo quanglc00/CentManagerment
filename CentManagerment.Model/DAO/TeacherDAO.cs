@@ -17,9 +17,16 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Teacher.Add(Teacher);
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    db.Teachers.Add(Teacher);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                } 
             }
 
         }
@@ -29,13 +36,25 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var teacherUpdate = db.Teacher.FirstOrDefault(x => x.TeacherId == teacher.TeacherId);
-                teacherUpdate.TeacherName = teacher.TeacherName;
-                teacherUpdate.TimeToWork = teacher.TimeToWork;
-                teacherUpdate.PricePerHour = teacher.PricePerHour;
-                teacherUpdate.LevelEducation = teacher.LevelEducation;
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    var teacherUpdate = db.Teachers.FirstOrDefault(x => x.TeacherId == teacher.TeacherId);
+                    teacherUpdate.TeacherName = teacher.TeacherName;
+                    teacherUpdate.Age = teacher.Age;
+                    teacherUpdate.PhoneNumber = teacher.PhoneNumber;
+                    teacherUpdate.Address = teacher.Address;
+                    teacherUpdate.Email = teacher.Email;
+                    teacherUpdate.TimeToWork = teacher.TimeToWork;
+                    teacherUpdate.PricePerHour = teacher.PricePerHour;
+                    teacherUpdate.LevelEducation = teacher.LevelEducation;
+                    teacherUpdate.Status = teacher.Status;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
 
         }
@@ -45,9 +64,16 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Teacher.Remove(teacher);
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    db.Teachers.Remove(teacher);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
 
         }

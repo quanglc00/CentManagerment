@@ -17,7 +17,7 @@ namespace CentManagerment.Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Class()
         {
-            this.Student = new HashSet<Student>();
+            this.Students = new HashSet<Student>();
         }
     
         public int ClassId { get; set; }
@@ -27,6 +27,6 @@ namespace CentManagerment.Model.EF
     
         public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

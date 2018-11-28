@@ -5139,3 +5139,7 @@ td.row-edit {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.inputtwo input {
+    width: 150px;
+}

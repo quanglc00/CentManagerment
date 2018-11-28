@@ -1,37 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CentManagermentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Class" EntityType="CentManagermentModel.Class" />
-    <EntitySet Name="Course" EntityType="CentManagermentModel.Course" />
-    <EntitySet Name="Expenditure" EntityType="CentManagermentModel.Expenditure" />
-    <EntitySet Name="News" EntityType="CentManagermentModel.News" />
-    <EntitySet Name="Revenue" EntityType="CentManagermentModel.Revenue" />
-    <EntitySet Name="Role" EntityType="CentManagermentModel.Role" />
-    <EntitySet Name="RoleManager" EntityType="CentManagermentModel.RoleManager" />
-    <EntitySet Name="Student" EntityType="CentManagermentModel.Student" />
-    <EntitySet Name="Teacher" EntityType="CentManagermentModel.Teacher" />
-    <EntitySet Name="UserManager" EntityType="CentManagermentModel.UserManager" />
-    <AssociationSet Name="FK_Classes_Courses" Association="CentManagermentModel.FK_Classes_Courses">
-      <End Role="Course" EntitySet="Course" />
-      <End Role="Class" EntitySet="Class" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Students_Classes" Association="CentManagermentModel.FK_Students_Classes">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="Student" EntitySet="Student" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Revenue_Expenditure" Association="CentManagermentModel.FK_Revenue_Expenditure">
-      <End Role="Expenditure" EntitySet="Expenditure" />
-      <End Role="Revenue" EntitySet="Revenue" />
-    </AssociationSet>
-    <AssociationSet Name="FK_News_Users" Association="CentManagermentModel.FK_News_Users">
-      <End Role="UserManager" EntitySet="UserManager" />
-      <End Role="News" EntitySet="News" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Revenues_Students" Association="CentManagermentModel.FK_Revenues_Students">
-      <End Role="Student" EntitySet="Student" />
-      <End Role="Revenue" EntitySet="Revenue" />
-    </AssociationSet>
-  </EntityContainer>
   <EntityType Name="Class">
     <Key>
       <PropertyRef Name="ClassId" />
@@ -40,8 +8,8 @@
     <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ClassAmountStudent" Type="Int32" />
     <Property Name="ClassCourseId" Type="Int32" />
-    <NavigationProperty Name="Course" Relationship="CentManagermentModel.FK_Classes_Courses" FromRole="Class" ToRole="Course" />
-    <NavigationProperty Name="Student" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Class" ToRole="Student" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Classes_Courses" FromRole="Class" ToRole="Course" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classes" FromRole="Class" ToRole="Student" />
   </EntityType>
   <EntityType Name="Course">
     <Key>
@@ -51,7 +19,7 @@
     <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CousePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Classes_Courses" FromRole="Course" ToRole="Class" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Courses" FromRole="Course" ToRole="Class" />
   </EntityType>
   <EntityType Name="Expenditure">
     <Key>
@@ -60,7 +28,7 @@
     <Property Name="ExpenditureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ExpenditureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Int32" />
-    <NavigationProperty Name="Revenue" Relationship="CentManagermentModel.FK_Revenue_Expenditure" FromRole="Expenditure" ToRole="Revenue" />
+    <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenue_Expenditure" FromRole="Expenditure" ToRole="Revenue" />
   </EntityType>
   <EntityType Name="News">
     <Key>
@@ -72,7 +40,7 @@
     <Property Name="NewsPostDate" Type="DateTime" Precision="0" />
     <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NewsUserID" Type="Int32" />
-    <NavigationProperty Name="UserManager" Relationship="CentManagermentModel.FK_News_Users" FromRole="News" ToRole="UserManager" />
+    <NavigationProperty Name="UserManager" Relationship="Self.FK_News_Users" FromRole="News" ToRole="UserManager" />
   </EntityType>
   <EntityType Name="Revenue">
     <Key>
@@ -83,8 +51,8 @@
     <Property Name="RevenuePrice" Type="Int32" />
     <Property Name="RevenueStudentId" Type="Int32" />
     <Property Name="ExpenditureId" Type="Int32" />
-    <NavigationProperty Name="Expenditure" Relationship="CentManagermentModel.FK_Revenue_Expenditure" FromRole="Revenue" ToRole="Expenditure" />
-    <NavigationProperty Name="Student" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Revenue" ToRole="Student" />
+    <NavigationProperty Name="Expenditure" Relationship="Self.FK_Revenue_Expenditure" FromRole="Revenue" ToRole="Expenditure" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Revenues_Students" FromRole="Revenue" ToRole="Student" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -109,8 +77,8 @@
     <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StudentMark" Type="Int32" />
     <Property Name="StudentClassID" Type="Int32" />
-    <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Student" ToRole="Class" />
-    <NavigationProperty Name="Revenue" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Students_Classes" FromRole="Student" ToRole="Class" />
+    <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
   </EntityType>
   <EntityType Name="Teacher">
     <Key>
@@ -119,9 +87,13 @@
     <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
     <Property Name="TimeToWork" Type="Int32" />
     <Property Name="PricePerHour" Type="Int32" />
     <Property Name="LevelEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="UserManager">
     <Key>
@@ -131,13 +103,13 @@
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserType" Type="Int32" />
-    <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="UserManager" ToRole="News" />
   </EntityType>
   <Association Name="FK_Classes_Courses">
-    <End Type="CentManagermentModel.Course" Role="Course" Multiplicity="0..1">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="CentManagermentModel.Class" Role="Class" Multiplicity="*" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Course">
         <PropertyRef Name="CourseId" />
@@ -148,10 +120,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Students_Classes">
-    <End Type="CentManagermentModel.Class" Role="Class" Multiplicity="0..1">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="CentManagermentModel.Student" Role="Student" Multiplicity="*" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Class">
         <PropertyRef Name="ClassId" />
@@ -162,8 +134,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Revenue_Expenditure">
-    <End Type="CentManagermentModel.Expenditure" Role="Expenditure" Multiplicity="0..1" />
-    <End Type="CentManagermentModel.Revenue" Role="Revenue" Multiplicity="*" />
+    <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="0..1" />
+    <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Expenditure">
         <PropertyRef Name="ExpenditureId" />
@@ -174,10 +146,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_News_Users">
-    <End Type="CentManagermentModel.UserManager" Role="UserManager" Multiplicity="0..1">
+    <End Role="UserManager" Type="Self.UserManager" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="CentManagermentModel.News" Role="News" Multiplicity="*" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserManager">
         <PropertyRef Name="UserId" />
@@ -188,10 +160,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Revenues_Students">
-    <End Type="CentManagermentModel.Student" Role="Student" Multiplicity="0..1">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="CentManagermentModel.Revenue" Role="Revenue" Multiplicity="*" />
+    <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Student">
         <PropertyRef Name="StudentId" />
@@ -201,4 +173,36 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Expenditures" EntityType="Self.Expenditure" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Revenues" EntityType="Self.Revenue" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="RoleManagers" EntityType="Self.RoleManager" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <EntitySet Name="UserManagers" EntityType="Self.UserManager" />
+    <AssociationSet Name="FK_Classes_Courses" Association="Self.FK_Classes_Courses">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Revenue_Expenditure" Association="Self.FK_Revenue_Expenditure">
+      <End Role="Expenditure" EntitySet="Expenditures" />
+      <End Role="Revenue" EntitySet="Revenues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+      <End Role="UserManager" EntitySet="UserManagers" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Revenues_Students" Association="Self.FK_Revenues_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Revenue" EntitySet="Revenues" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

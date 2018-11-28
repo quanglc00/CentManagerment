@@ -17,7 +17,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.UserManager.Add(userManager);
+                db.UserManagers.Add(userManager);
                 db.SaveChanges();
             }
             return true;
@@ -30,7 +30,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var userManagerUpdate = db.UserManager.FirstOrDefault(x => x.UserId == userManager.UserId);
+                var userManagerUpdate = db.UserManagers.FirstOrDefault(x => x.UserId == userManager.UserId);
                 userManagerUpdate.UserName = userManager.UserName;
                 userManagerUpdate.UserPassword = userManager.UserPassword;
                 userManagerUpdate.UserType = userManager.UserType;
@@ -45,7 +45,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.UserManager.Remove(userManager);
+                db.UserManagers.Remove(userManager);
                 db.SaveChanges();
             }
             return true;
