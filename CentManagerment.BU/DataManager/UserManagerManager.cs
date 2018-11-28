@@ -53,5 +53,15 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
+        public List<UserManagerDTO> GetListUserManagers()
+        {
+            var list = db.UserManager.ToList();
+            var listDTO = new List<UserManagerDTO>();
+            foreach (var item in list)
+            {
+                listDTO.Add(new ConvertDataUserManager().ConvertDataUserManagerToDTO(item));
+            }
+            return listDTO;
+        }
     }
 }

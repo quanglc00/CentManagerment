@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DAO\ClassDAO.cs" />
     <Compile Include="DAO\CourseDAO.cs" />
+    <Compile Include="DAO\ExpenditureDAO.cs" />
     <Compile Include="DAO\NewsDAO.cs" />
     <Compile Include="DAO\RegisterDAO.cs" />
     <Compile Include="DAO\RevenueDAO.cs" />

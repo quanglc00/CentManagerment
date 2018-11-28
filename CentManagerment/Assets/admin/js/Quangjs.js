@@ -1,11 +1,11 @@
 ﻿function EditUserManager(i) {
-    if ($($('.UserType').get(i)).val() == "" || $($('.UserPassword').get(i)).val() == "" || $($('.FullName').get(i)).val() == "" || $($('.UserPhoneNumber').get(i)).val() == "") {
+    if ($($('.UserType').get(i)).val() === "" || $($('.UserPassword').get(i)).val() === "" || $($('.FullName').get(i)).val() === "" || $($('.UserPhoneNumber').get(i)).val() === "") {
         alert("Bạn phải chọn/điền thông tin trước khi sửa");
     }
-    else if ($($('.UserPhoneNumber').get(i)).length >16) {
+    else if ($($('.UserPhoneNumber').get(i)).val().length > 16) {
         alert("Số điện thoại phải dưới 16 ký tự");
     }
-    else{
+    else {
         var User = {
             FullName: $($('.FullName').get(i)).val(),
             UserId: $($('.UserId').get(i)).val(),
@@ -31,7 +31,7 @@
     }
 }
 function InsertUserManager(i) {
-    if ($($('.UserType').get(i)).val() == "" || $($('.UserPassword').get(i)).val() == "") {
+    if ($($('.UserType').get(i)).val() === "" || $($('.UserPassword').get(i)).val() === "") {
         alert("Bạn phải chọn/điền thông tin trước khi sửa");
     }
     else {
@@ -56,13 +56,22 @@ function InsertUserManager(i) {
             }
         });
     }
-}
-function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode;
-    var check = false;
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    else if (charCode[0] == 43)
-        return true;
-    return true;
+};
+for (let i = 0; i < $('.UserPhoneNumber').length; i++) {
+    $($('.UserPhoneNumber').get(i)).keypress(function (evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if ($($('.UserPhoneNumber').get(i)).val().length === 0) {
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                if (charCode === 43)
+                    return true;
+                else
+                    return false;
+            }
+        } else {
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            else
+                return true;
+        }
+    });
 }

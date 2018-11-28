@@ -154,6 +154,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassManagermentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseManagermentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentManagermentController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,6 +218,8 @@
     <Content Include="Assets\admin\images\vipdb.png" />
     <Content Include="Assets\admin\js\dat.js" />
     <Content Include="Assets\admin\js\JavaScript.js" />
+    <Content Include="Assets\admin\js\Quangjs.js" />
+    <Content Include="Assets\admin\js\script.js" />
     <Content Include="Assets\admin\js\validation.js" />
     <Content Include="Assets\admin\libs\abc\jquery.min.js" />
     <Content Include="Assets\admin\libs\adminlte\adminlte.min.js" />
@@ -1685,6 +1690,7 @@
     <Content Include="Assets\admin\libs\skins\_all-skins.min.css" />
     <Content Include="Assets\admin\libs\validation\validation.js" />
     <Content Include="Assets\admin\style.css" />
+    <Content Include="Assets\ClassJs.js" />
     <Content Include="Assets\client\css\animate.min.css" />
     <Content Include="Assets\client\css\bootstrap.css" />
     <Content Include="Assets\client\css\bootstrap\bootstrap-grid.css" />
@@ -1910,6 +1916,14 @@
     <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.ttf" />
     <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.woff" />
     <Content Include="Assets\admin\fonts\SourceSan_pro\SourceSansPro-SemiBoldItalic.woff2" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\InsertView.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\UpdateView.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseManagerment\InsertView.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseManagerment\UpdateView.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\InsertEployee.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

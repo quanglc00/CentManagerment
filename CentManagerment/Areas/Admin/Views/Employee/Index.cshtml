@@ -1,5 +1,6 @@
 ﻿@{
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; var listUser = (List<CentManagerment.BU.DTO.UserManagerDTO>)ViewBag.ListUser;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listUser = (List<CentManagerment.BU.DTO.UserManagerDTO>)ViewBag.ListUser;
     var dem = 0;
 }
 
@@ -93,7 +94,7 @@
                                     </div>
                                     <div class="form__table-col-6">
                                         <label for="">Số điện thoại:</label>
-                                        <input type="text" onkeypress="return isNumberKey(event)" class="UserPhoneNumber" />
+                                        <input type="text" class="UserPhoneNumber" />
                                     </div>
                                 </div>
                                 <div class="fixed__button text-right">

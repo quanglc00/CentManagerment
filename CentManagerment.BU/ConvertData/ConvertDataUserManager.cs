@@ -17,6 +17,8 @@ namespace CentManagerment.BU.ConvertData
                 UserId = userManager.UserId,
                 UserName = userManager.UserName,
                 UserPassword = userManager.UserPassword,
+                FullName = userManager.FullName,
+                UserPhoneNumber = userManager.UserPhoneNumber,
                 UserType =userManager.UserType
             };
             return userManagerDTO;
@@ -27,6 +29,8 @@ namespace CentManagerment.BU.ConvertData
             {
                 UserName = userManagerDTO.UserName,
                 UserPassword = userManagerDTO.UserPassword,
+                FullName = userManagerDTO.FullName,
+                UserPhoneNumber = userManagerDTO.UserPhoneNumber,
                 UserType = userManagerDTO.UserType
             };
             if (userManagerDTO.UserId > 0)

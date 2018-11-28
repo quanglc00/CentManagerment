@@ -50,21 +50,25 @@
   <ItemGroup>
     <Compile Include="ConvertData\ConvertDataClass.cs" />
     <Compile Include="ConvertData\ConvertDataCourse.cs" />
+    <Compile Include="ConvertData\ConvertDataExpenditure.cs" />
     <Compile Include="ConvertData\ConvertDataNews.cs" />
     <Compile Include="ConvertData\ConvertDataRegisterManagerment.cs" />
     <Compile Include="ConvertData\ConvertDataRevenue.cs" />
     <Compile Include="ConvertData\ConvertDataRole.cs" />
     <Compile Include="ConvertData\ConvertDataRoleManager.cs" />
     <Compile Include="ConvertData\ConvertDataStudent.cs" />
+    <Compile Include="ConvertData\ConvertDataTeacher.cs" />
     <Compile Include="ConvertData\ConvertDataUserManager.cs" />
     <Compile Include="DataManager\ClassManager.cs" />
     <Compile Include="DataManager\CourseManager.cs" />
+    <Compile Include="DataManager\ExpenditureManager.cs" />
     <Compile Include="DataManager\NewsManager.cs" />
     <Compile Include="DataManager\RegisterManager.cs" />
     <Compile Include="DataManager\RevenueManager.cs" />
     <Compile Include="DataManager\RoleManager.cs" />
     <Compile Include="DataManager\RoleManagerManager.cs" />
     <Compile Include="DataManager\StudentManager.cs" />
+    <Compile Include="DataManager\TeacherManager.cs" />
     <Compile Include="DataManager\UserManagerManager.cs" />
     <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="DTO\CourseDTO.cs" />

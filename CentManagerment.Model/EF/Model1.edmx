@@ -42,14 +42,16 @@
           <Property Name="NewsTitle" Type="nvarchar" MaxLength="100" />
           <Property Name="NewsUserID" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="RegisterManagerment">
           <Key>
             <PropertyRef Name="register_id" />
           </Key>
           <Property Name="register_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="register_name" Type="nvarchar" MaxLength="200" />
-          <Property Name="register_phone" Type="varchar" MaxLength="16" />
-          <Property Name="register_email" Type="varchar" MaxLength="100" />
+          <Property Name="register_name" Type="nvarchar" MaxLength="69" />
+          <Property Name="register_phone" Type="nvarchar" MaxLength="16" />
+          <Property Name="register_email" Type="nvarchar" MaxLength="69" />
           <Property Name="register_course" Type="int" />
           <Property Name="register_status" Type="int" />
         </EntityType>
@@ -86,6 +88,10 @@
           <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
           <Property Name="StudentMark" Type="int" />
           <Property Name="StudentClassID" Type="int" />
+          <Property Name="StudentSchoolFee" Type="float" />
+          <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
+          <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
+          <Property Name="StudentAdress" Type="ntext" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -106,6 +112,8 @@
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="UserPassword" Type="varchar" MaxLength="50" />
           <Property Name="UserType" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="69" />
+          <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="16" />
         </EntityType>
         <Association Name="FK_Classes_Courses">
           <End Role="Course" Type="Self.Course" Multiplicity="0..1">
@@ -180,13 +188,22 @@
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expenditure" EntityType="Self.Expenditure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RegisterManagerment" EntityType="Self.RegisterManagerment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleManager" EntityType="Self.RoleManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserManager" EntityType="Self.UserManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterManagerment" EntityType="Self.RegisterManagerment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RegisterManagerment].[register_id] AS [register_id], 
+    [RegisterManagerment].[register_name] AS [register_name], 
+    [RegisterManagerment].[register_phone] AS [register_phone], 
+    [RegisterManagerment].[register_email] AS [register_email], 
+    [RegisterManagerment].[register_course] AS [register_course], 
+    [RegisterManagerment].[register_status] AS [register_status]
+    FROM [dbo].[RegisterManagerment] AS [RegisterManagerment]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Classes_Courses" Association="Self.FK_Classes_Courses">
             <End Role="Course" EntitySet="Course" />
             <End Role="Class" EntitySet="Class" />
@@ -223,6 +240,7 @@
           <EntitySet Name="Student" EntityType="CentManagermentModel.Student" />
           <EntitySet Name="Teacher" EntityType="CentManagermentModel.Teacher" />
           <EntitySet Name="UserManager" EntityType="CentManagermentModel.UserManager" />
+          <EntitySet Name="RegisterManagerment" EntityType="CentManagermentModel.RegisterManagerment" />
           <AssociationSet Name="FK_Classes_Courses" Association="CentManagermentModel.FK_Classes_Courses">
             <End Role="Course" EntitySet="Course" />
             <End Role="Class" EntitySet="Class" />
@@ -243,7 +261,6 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Revenue" EntitySet="Revenue" />
           </AssociationSet>
-          <EntitySet Name="RegisterManagerment" EntityType="CentManagermentModel.RegisterManagerment" />
         </EntityContainer>
         <EntityType Name="Class">
           <Key>
@@ -322,6 +339,10 @@
           <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StudentMark" Type="Int32" />
           <Property Name="StudentClassID" Type="Int32" />
+          <Property Name="StudentSchoolFee" Type="Double" />
+          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StudentAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Student" ToRole="Class" />
           <NavigationProperty Name="Revenue" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
         </EntityType>
@@ -344,7 +365,20 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserType" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
+        </EntityType>
+        <EntityType Name="RegisterManagerment">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="register_name" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="register_phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="register_email" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="register_course" Type="Int32" />
+          <Property Name="register_status" Type="Int32" />
         </EntityType>
         <Association Name="FK_Classes_Courses">
           <End Type="CentManagermentModel.Course" Role="Course" Multiplicity="0..1">
@@ -414,17 +448,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="RegisterManagerment">
-          <Key>
-            <PropertyRef Name="register_id" />
-          </Key>
-          <Property Name="register_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="register_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="register_phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="register_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="register_course" Type="Int32" />
-          <Property Name="register_status" Type="Int32" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -503,6 +526,10 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="CentManagermentModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
+                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
                 <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
                 <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />
@@ -525,6 +552,8 @@
           <EntitySetMapping Name="UserManager">
             <EntityTypeMapping TypeName="CentManagermentModel.UserManager">
               <MappingFragment StoreEntitySet="UserManager">
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
