@@ -12,12 +12,13 @@ namespace CentManagerment.BU.DataManager
 {
     public class CourseManager
     {
+        public readonly ConvertDataCourse convertData = new ConvertDataCourse();
         CentManagermentEntities db = null;
         public bool CourseManagerInsert(CourseDTO course)
         {
             try
             {
-                return new CourseDAO().Insert(new ConvertDataCourse().ConvertDataCourseToEF(course));
+                return new CourseDAO().Insert(convertData.ConvertDataCourseToEF(course));
             }
             catch (Exception)
             {
@@ -29,7 +30,7 @@ namespace CentManagerment.BU.DataManager
         {
             try
             {
-                return new CourseDAO().Update(new ConvertDataCourse().ConvertDataCourseToEF(course));
+                return new CourseDAO().Update(convertData.ConvertDataCourseToEF(course));
             }
             catch (Exception)
             {
@@ -37,11 +38,11 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
-        public bool CourseManagerDelete(CourseDTO course)
+        public bool CourseManagerDelete(int courseId)
         {
             try
             {
-                return new CourseDAO().Delete(new ConvertDataCourse().ConvertDataCourseToEF(course));
+                return new CourseDAO().Delete(courseId);
             }
             catch (Exception)
             {
@@ -49,5 +50,36 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
+        /// <summary>
+        /// get all list course 
+        /// </summary>
+        /// <returns></returns>
+        public List<CourseDTO> GetListCourse()
+        {
+            using (db = new CentManagermentEntities())
+            {
+                var listCourse = db.Course.ToList();
+                List<CourseDTO> listDto = new List<CourseDTO>();
+                foreach (var item in listCourse)
+                {
+                    listDto.Add(convertData.ConvertDataCourseToDTO(item));
+
+                }
+                return listDto;
+            }
+        }
+        /// <summary>
+        /// lay ra khoa hoc theo id
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        public CourseDTO GetCourseById(int courseId)
+        {
+            using (db = new CentManagermentEntities())
+            {
+                return convertData.ConvertDataCourseToDTO(db.Course.SingleOrDefault(x => x.CourseId == courseId));
+            }
+        }
+
     }
 }

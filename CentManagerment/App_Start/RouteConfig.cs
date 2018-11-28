@@ -12,7 +12,11 @@ namespace CentManagerment
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            //routes.MapRoute(
+            //    name: "InsertClass",
+            //    url: "them-lop-hoc",
+            //    defaults: new { controller = "ClassManagerment", action = "InsertView", id = UrlParameter.Optional }
+            //);
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

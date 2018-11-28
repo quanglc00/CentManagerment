@@ -37,11 +37,11 @@ namespace CentManagerment.Model.DAO
 
         }
         // use using to open and close connection
-        public bool Delete(Course course)
+        public bool Delete(int courseId)
         {
             using (db = new CentManagermentEntities())
             {
-                db.Course.Remove(course);
+                db.Course.Remove(db.Course.Find(courseId));
                 db.SaveChanges();
             }
             return true;

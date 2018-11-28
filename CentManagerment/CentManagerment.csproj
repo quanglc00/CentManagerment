@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -148,6 +154,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassManagermentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseManagermentController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentManagermentController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1665,6 +1673,7 @@
     <Content Include="Assets\admin\libs\skins\_all-skins.min.css" />
     <Content Include="Assets\admin\libs\validation\validation.js" />
     <Content Include="Assets\admin\style.css" />
+    <Content Include="Assets\ClassJs.js" />
     <Content Include="Assets\client\css\animate.min.css" />
     <Content Include="Assets\client\css\bootstrap.css" />
     <Content Include="Assets\client\css\bootstrap\bootstrap-grid.css" />
@@ -1838,6 +1847,11 @@
     <Content Include="Assets\admin\libs\jquery-slimscroll\package.json" />
     <Content Include="Assets\admin\libs\jquery-slimscroll\README.md" />
     <Content Include="Areas\Admin\Views\StudentManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\InsertView.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseManagerment\InsertView.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassManagerment\UpdateView.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

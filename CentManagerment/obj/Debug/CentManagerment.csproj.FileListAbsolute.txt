@@ -285,3 +285,5 @@ C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerm
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment\obj\Debug\CentManagerment.csproj.CopyComplete
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment\obj\Debug\CentManagerment.dll
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment\obj\Debug\CentManagerment.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment\bin\EntityFramework.SqlServer.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment\bin\EntityFramework.SqlServer.xml
