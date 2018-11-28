@@ -27,7 +27,7 @@ namespace CentManagerment.BU.ConvertData
             {
                 CourseName = courseDTO.CourseName,
                 CousePrice = courseDTO.CousePrice,
-                CourseId = courseDTO.CourseId
+                CourseTime = courseDTO.CourseTime,
             };
             if (courseDTO.CourseId > 0)
             {

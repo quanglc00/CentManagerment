@@ -5101,7 +5101,7 @@ td.row-edit {
   padding: 0px 15px;
 }
 
-/*.nhanvien-chinhsua__content .nhanvien-chinhsua__input:nth-child(1) input {
+.nhanvien-chinhsua__content .nhanvien-chinhsua__input:nth-child(1) input {
   width: 500px;
 }
 
@@ -5111,7 +5111,7 @@ td.row-edit {
 
 .nhanvien-chinhsua__content .nhanvien-chinhsua__input:nth-child(3) input {
   width: 500px;
-}*/
+}
 
 .nhanvien-chinhsua__content .nhanvien-chinhsua__input input, .nhanvien-chinhsua__content .nhanvien-chinhsua__input select {
   width: 380px;

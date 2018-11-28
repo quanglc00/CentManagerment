@@ -4,8 +4,9 @@
     ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-header content-header-wrap">
+@{
     <h1 class="fleft">Nhân viên</h1><a class="btn--primary__edit btn--add" href="@Url.Action("AddStudent","StudentManagerment")">Thêm mới</a>
+}
     <div class="clearfix"></div>
 </div>
 <section class="nhanvien" id="nhanvien">
@@ -115,6 +116,7 @@
                     }
                 }
 
+<h2>Index</h2>
             </tbody>
         </table>
         <div class="list-rent__bottom">
