@@ -2,6 +2,7 @@
 using CentManagerment.BU.DTO;
 using CentManagerment.Model.DAO;
 using CentManagerment.Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,18 +70,26 @@ namespace CentManagerment.BU.DataManager
         /// </summary>
         /// <returns></returns>
         /// #region Dungdz
-        public List<ClassDTO> GetListClass()
+        public IEnumerable<ClassDTO> GetListClass(string searchString, int page, int pageSize)
         {
+            var listDTO = new List<ClassDTO>();
+            List<Class> listClass = new List<Class>();
             using (db = new CentManagermentEntities())
             {
-                var listClass = db.Class.ToList();
-                var listDTO = new List<ClassDTO>();
-                foreach (var item in listClass)
+                listClass = db.Class.ToList();
+                if (!String.IsNullOrEmpty(searchString))
                 {
-                    listDTO.Add(new ConvertDataClass().ConvertDataClassToDTO(item));
+                    listClass = db.Class.Where(x => x.ClassName.Contains(searchString) ||
+                    x.ClassAmountStudent.ToString().Contains(searchString)).ToList();
                 }
-                return listDTO;
+                foreach (var mb in listClass)
+                {
+                    listDTO.Add(new ConvertDataClass().ConvertDataClassToDTO(mb));
+                }
             }
+
+            return listDTO.ToPagedList(page, pageSize);
+
         }
 
         public ClassDTO GetClassById(int classId)

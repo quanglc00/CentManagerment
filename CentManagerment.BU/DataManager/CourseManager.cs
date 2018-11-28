@@ -2,6 +2,7 @@
 using CentManagerment.BU.DTO;
 using CentManagerment.Model.DAO;
 using CentManagerment.Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace CentManagerment.BU.DataManager
             }
             catch (Exception)
             {
-                
+
                 return false;
             }
         }
@@ -50,23 +51,44 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
-        /// <summary>
-        /// get all list course 
-        /// </summary>
-        /// <returns></returns>
         public List<CourseDTO> GetListCourse()
         {
+            List<CourseDTO> listCourseDTO = new List<CourseDTO>();
+            List<Course> listCourse = new List<Course>();
+            using (var db = new CentManagermentEntities())
+            {
+                listCourse = db.Course.ToList();
+
+            }
+            foreach (var mb in listCourse)
+            {
+                listCourseDTO.Add(convertData.ConvertDataCourseToDTO(mb));
+            }
+            return listCourseDTO;
+        }
+        /// <summary>
+        /// get all list course search and paging
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<CourseDTO> GetListCourseSearchAndPaging(string searchString, int page, int pageSize)
+        {
+            List<CourseDTO> listDto = new List<CourseDTO>();
+            List<Course> listCourse = new List<Course>();
             using (db = new CentManagermentEntities())
             {
-                var listCourse = db.Course.ToList();
-                List<CourseDTO> listDto = new List<CourseDTO>();
+                listCourse = db.Course.ToList();
+                if(!String.IsNullOrEmpty(searchString))
+                {
+                    listCourse = db.Course.Where(x => x.CourseName.Contains(searchString) ||
+                    x.CourseTime.Contains(searchString) ||
+                    x.CousePrice.ToString().Contains(searchString)).ToList();
+                }
                 foreach (var item in listCourse)
                 {
                     listDto.Add(convertData.ConvertDataCourseToDTO(item));
-
                 }
-                return listDto;
             }
+            return listDto.ToPagedList(page, pageSize);
         }
         /// <summary>
         /// lay ra khoa hoc theo id

@@ -22,9 +22,10 @@ namespace CentManagerment.Areas.Admin.Controllers
         /// </summary>
         /// <returns></returns>
         /// #region Dungdz98
-        public ActionResult Index()
+        public ActionResult Index(string searchString,int page=1, int pageSize=3)
         {
-            var model = classManager.GetListClass();
+            var model = classManager.GetListClass(searchString,page,pageSize);
+            ViewBag.searchString = searchString;
             return View(model);
         }
         /// <summary>

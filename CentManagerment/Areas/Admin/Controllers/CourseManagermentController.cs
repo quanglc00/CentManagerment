@@ -16,9 +16,10 @@ namespace CentManagerment.Areas.Admin.Controllers
         /// Get all list course
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Index(string searchString,int page = 1,int pageSize = 3)
         {
-            var model = courseManager.GetListCourse();
+            var model = courseManager.GetListCourseSearchAndPaging(searchString,page,pageSize);
+            ViewBag.searchString = searchString;
             return View(model);
         }
         /// <summary>
@@ -48,6 +49,26 @@ namespace CentManagerment.Areas.Admin.Controllers
         {
             var deleteManager = courseManager.CourseManagerDelete(courseId);
             return Json(deleteManager, behavior: JsonRequestBehavior.AllowGet);
+        }
+        /// <summary>
+        /// man hinh chinh sua khoa hoc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult UpdateView(int id)
+        {
+            var model = courseManager.GetCourseById(id);
+            return View(model);
+        }
+        /// <summary>
+        /// action chỉnh sửa khóa học
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public ActionResult Update(CourseDTO dto)
+        {
+            var updateClass = courseManager.CourseManagerUpdate(dto);
+            return RedirectToAction("Index");
         }
     }
 }

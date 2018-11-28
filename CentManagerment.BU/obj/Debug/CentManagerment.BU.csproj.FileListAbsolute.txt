@@ -33,3 +33,7 @@ C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerm
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.csproj.CopyComplete
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.dll
 C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\obj\Debug\CentManagerment.BU.pdb
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\PagedList.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\PagedList.Mvc.dll
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\PagedList.xml
+C:\Users\Simplify V2\Desktop\TTTN\centerManagerment\CentManagerment\CentManagerment.BU\bin\Debug\PagedList.Mvc.xml

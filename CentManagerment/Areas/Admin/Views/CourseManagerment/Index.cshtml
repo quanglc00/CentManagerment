@@ -1,13 +1,16 @@
-﻿@model IEnumerable<CentManagerment.BU.DTO.CourseDTO>
+﻿@model PagedList.IPagedList<CentManagerment.BU.DTO.CourseDTO>
+@using PagedList.Mvc;
 
 @{
+    /**/
+
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var controller = "Class";
 }
 
 <div class="content-header content-header-wrap">
-    <h1 class="fleft">Quản lý lớp học</h1>
+    <h1 class="fleft">Quản lý khóa học</h1>
     <button class="btn--primary__edit btn--add">@Html.ActionLink("Thêm mới", "InsertView", "CourseManagerment")</button>
     <div class="clearfix"></div>
 </div>
@@ -19,30 +22,30 @@
                     <form action="" name="control">
                         <div class="form__row-top">
                             <div class="form__row-top__item">
-                                <input class="border--base padding" type="text" placeholder="Từ khóa tìm kiếm" />
+                                <input class="border--base padding" type="text" name="searchString" placeholder="Từ khóa tìm kiếm" value="@ViewBag.searchString " />
                             </div>
-                            <div class="form__row-top__item">
-                                <div class="section-top__control--fromdate">
-                                    <span>
-                                        Từ ngày
-                                        <div class="fromDate">
-                                            <i class="fa fa-calendar"></i>
-                                            <input class="padding border--base" id="datepicker1" type="text" required="required" />
-                                        </div>
-                                    </span>
+                            @*<div class="form__row-top__item">
+                                    <div class="section-top__control--fromdate">
+                                        <span>
+                                            Từ ngày
+                                            <div class="fromDate">
+                                                <i class="fa fa-calendar"></i>
+                                                <input class="padding border--base" id="datepicker1" type="text" required="required" />
+                                            </div>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form__row-top__item">
-                                <div class="section-top__control--todate">
-                                    <span>
-                                        Đến ngày
-                                        <div class="toDate">
-                                            <i class="fa fa-calendar"></i>
-                                            <input class="padding border--base" id="datepicker2" type="text" required="required" />
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
+                                <div class="form__row-top__item">
+                                    <div class="section-top__control--todate">
+                                        <span>
+                                            Đến ngày
+                                            <div class="toDate">
+                                                <i class="fa fa-calendar"></i>
+                                                <input class="padding border--base" id="datepicker2" type="text" required="required" />
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>*@
                             <div class="form__row-top__item">
                                 <input class="submit-control border--base" type="submit" value="Lọc" />
                             </div>
@@ -72,7 +75,7 @@
                         <span class="icon-menu">
                             <i class="fa fa-plus-circle"></i>
                             <ul>
-                                <li>@Html.ActionLink("Chỉnh sửa", "UpdateView", "CourseManagerment", new { classId = item.CourseId })</li>
+                                <li>@Html.ActionLink("Chỉnh sửa", "UpdateView", new { id = item.CourseId })</li>
                                 <li onclick="DeleteCourse(@item.CourseId)">Bỏ thùng rác</li>
                                 @*xoa khoa hoc*@
                                 <script>
@@ -101,14 +104,15 @@
                 </tr>
             }
         </table>
-        <div class="list-rent__bottom">
-            <div class="list-rent__bottom--content section-buttons text-right">
-                <span class="total-file">147 mục</span>
-                <button><i class="fa fa-angle-double-left"></i></button>
-                <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
-                <button><i class="fa fa-angle-right"></i></button>
-                <button><i class="fa fa-angle-double-right">     </i></button>
-            </div>
-        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.searchString }))
+        @*<div class="list-rent__bottom">
+                <div class="list-rent__bottom--content section-buttons text-right">
+                    <span class="total-file">147 mục</span>
+                    <button><i class="fa fa-angle-double-left"></i></button>
+                    <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
+                    <button><i class="fa fa-angle-right"></i></button>
+                    <button><i class="fa fa-angle-double-right">     </i></button>
+                </div>
+            </div>*@
     </div>
 </section>

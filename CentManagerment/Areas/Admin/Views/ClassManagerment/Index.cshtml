@@ -1,5 +1,5 @@
-﻿@model IEnumerable<CentManagerment.BU.DTO.ClassDTO>
-
+﻿@model PagedList.IPagedList<CentManagerment.BU.DTO.ClassDTO>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -18,9 +18,9 @@
                     <form action="" name="control">
                         <div class="form__row-top">
                             <div class="form__row-top__item">
-                                <input class="border--base padding" type="text" placeholder="Từ khóa tìm kiếm" />
+                                <input class="border--base padding" type="text" name="searchString" placeholder="Từ khóa tìm kiếm" value="@ViewBag.searchString" />
                             </div>
-                            <div class="form__row-top__item">
+                            @*<div class="form__row-top__item">
                                 <div class="section-top__control--fromdate">
                                     <span>
                                         Từ ngày
@@ -41,7 +41,7 @@
                                         </div>
                                     </span>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form__row-top__item">
                                 <input class="submit-control border--base" type="submit" value="Lọc" />
                             </div>
@@ -59,8 +59,8 @@
                 <th>Tên lớp</th>
                 <th>Số học viên</th>
                 <th>Tên khóa học</th>
-                <th>Học phí</th>
                 <th>Thời gian học</th>
+                <th>Học phí</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -70,32 +70,33 @@
                     <td>@item.ClassAmountStudent</td>
                     @if (item.CourseDTO != null)
                     {
-                    <td>@item.CourseDTO.CourseName</td>
-                    <td>@item.CourseDTO.CourseTime</td>
-                    <td>@item.CourseDTO.CousePrice</td>
+                        <td>@item.CourseDTO.CourseName</td>
+                        <td>@item.CourseDTO.CourseTime</td>
+                        <td>@item.CourseDTO.CousePrice</td>
                     }
                     <td>
                         <span class="icon-menu">
                             <i class="fa fa-plus-circle"></i>
                             <ul>
-                                <li>@Html.ActionLink("Chỉnh sửa", "UpdateView" , new { id = item.ClassId })</li>
-                                <li onclick="DeleteClass(@item.ClassId)">Bỏ thùng rác</li>  
+                                <li>@Html.ActionLink("Chỉnh sửa", "UpdateView", new { id = item.ClassId })</li>
+                                <li onclick="DeleteClass(@item.ClassId)">Bỏ thùng rác</li>
 
                             </ul>
                         </span>
                     </td>
-                    
+
                 </tr>
             }
-            </table>
-            <div class="list-rent__bottom">
-                <div class="list-rent__bottom--content section-buttons text-right">
-                    <span class="total-file">147 mục</span>
-                    <button><i class="fa fa-angle-double-left"></i></button>
-                    <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
-                    <button><i class="fa fa-angle-right"></i></button>
-                    <button><i class="fa fa-angle-double-right">     </i></button>
-                </div>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.searchString }))
+        @*<div class="list-rent__bottom">
+            <div class="list-rent__bottom--content section-buttons text-right">
+                <span class="total-file">147 mục</span>
+                <button><i class="fa fa-angle-double-left"></i></button>
+                <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
+                <button><i class="fa fa-angle-right"></i></button>
+                <button><i class="fa fa-angle-double-right">     </i></button>
             </div>
-        </div>
-    </section>
+        </div>*@
+    </div>
+</section>
