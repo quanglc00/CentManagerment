@@ -10,7 +10,9 @@ namespace CentManagerment.BU.DTO
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string FullName { get; set; }
         public string UserPassword { get; set; }
+        public string UserPhoneNumber { get; set; }
         public int? UserType { get; set; }
     }
 }

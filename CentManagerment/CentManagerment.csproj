@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -150,6 +156,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentManagermentController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +201,7 @@
     <Content Include="Assets\admin\images\vip1.png" />
     <Content Include="Assets\admin\images\vipd.png" />
     <Content Include="Assets\admin\images\vipdb.png" />
+    <Content Include="Assets\admin\js\Quangjs.js" />
     <Content Include="Assets\admin\js\script.js" />
     <Content Include="Assets\admin\js\validation.js" />
     <Content Include="Assets\admin\libs\abc\jquery.min.js" />
@@ -1838,6 +1846,8 @@
     <Content Include="Assets\admin\libs\jquery-slimscroll\package.json" />
     <Content Include="Assets\admin\libs\jquery-slimscroll\README.md" />
     <Content Include="Areas\Admin\Views\StudentManagerment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\InsertEployee.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

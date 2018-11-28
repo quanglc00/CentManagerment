@@ -132,6 +132,8 @@
     <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserType" Type="Int32" />
     <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
+    <Property Name="FullName" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+    <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Classes_Courses">
     <End Type="CentManagermentModel.Course" Role="Course" Multiplicity="0..1">

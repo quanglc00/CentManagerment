@@ -90,6 +90,8 @@
     <Property Name="UserName" Type="varchar" MaxLength="50" />
     <Property Name="UserPassword" Type="varchar" MaxLength="50" />
     <Property Name="UserType" Type="int" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="69" />
+    <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="16" />
   </EntityType>
   <Association Name="FK_Classes_Courses">
     <End Role="Course" Type="Self.Course" Multiplicity="0..1">

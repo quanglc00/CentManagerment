@@ -95,6 +95,8 @@
     <EntitySetMapping Name="UserManager">
       <EntityTypeMapping TypeName="CentManagermentModel.UserManager">
         <MappingFragment StoreEntitySet="UserManager">
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="UserType" ColumnName="UserType" />
           <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />

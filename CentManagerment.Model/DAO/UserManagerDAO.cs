@@ -31,8 +31,9 @@ namespace CentManagerment.Model.DAO
             using (db = new CentManagermentEntities())
             {
                 var userManagerUpdate = db.UserManager.FirstOrDefault(x => x.UserId == userManager.UserId);
-                userManagerUpdate.UserName = userManager.UserName;
+                userManagerUpdate.FullName = userManager.FullName;
                 userManagerUpdate.UserPassword = userManager.UserPassword;
+                userManagerUpdate.UserPhoneNumber = userManager.UserPhoneNumber;
                 userManagerUpdate.UserType = userManager.UserType;
                 db.SaveChanges();
             }
