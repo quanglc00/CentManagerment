@@ -12,11 +12,8 @@ namespace CentManagerment.BU.DataManager
 {
     public class StudentManager
     {
-        CentManagermentEntities db = null;
-        public StudentManager()
-        {
-            db = new CentManagermentEntities();
-        }
+        
+
         public bool StudentManagerInsert(StudentDTO Student)
         {
             try
@@ -53,5 +50,50 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
+
+
+        public bool StudentManagerDeleteById(int idStudent)
+        {
+            try
+            {
+                return new StudentDAO().DeleteById(idStudent);
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+
+
+        #region Đạt
+        public Student GetInfoStudent(int id)
+        {
+            var st = new Student();
+            using (var db = new CentManagermentEntities())
+            {
+                st = db.Student.Find(id);
+            }
+            return st;
+        }
+
+
+        public List<StudentDTO> GetListStudents()
+        {
+            var listStudents = new List<Student>();
+            using (var db = new CentManagermentEntities())
+            {
+                listStudents = db.Student.ToList();
+            }
+            var listStudentsDTO = new List<StudentDTO>();
+            foreach (var st in listStudents)
+            {
+                listStudentsDTO.Add(new ConvertDataStudent().ConvertDataStudentToDTO(st));
+            }
+            return listStudentsDTO;
+        }
+
+        #endregion
     }
 }

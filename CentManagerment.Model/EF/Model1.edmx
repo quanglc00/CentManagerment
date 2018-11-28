@@ -75,6 +75,10 @@
           <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
           <Property Name="StudentMark" Type="int" />
           <Property Name="StudentClassID" Type="int" />
+          <Property Name="StudentSchoolFee" Type="float" />
+          <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
+          <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
+          <Property Name="StudentAdress" Type="ntext" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -313,6 +317,10 @@
           <Property Name="StudentClassID" Type="Int32" />
           <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Student" ToRole="Class" />
           <NavigationProperty Name="Revenue" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
+          <Property Name="StudentSchoolFee" Type="Double" />
+          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StudentAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -483,6 +491,10 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="CentManagermentModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
+                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
                 <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
                 <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />

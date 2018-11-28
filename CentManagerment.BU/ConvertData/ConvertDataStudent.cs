@@ -18,8 +18,13 @@ namespace CentManagerment.BU.ConvertData
                 StudentClassID = student.StudentClassID,
                 StudentMark = student.StudentMark,
                 StudentName = student.StudentName,
-                ClassDTO = new ConvertDataClass().ConvertDataClassToDTO(student.Class)
+                StudentSchoolFee = student.StudentSchoolFee,
+                StudentAdress = student.StudentAdress,
+                StudentEmail = student.StudentEmail,
+                StudentPhone = student.StudentPhone
             };
+            if (student.StudentClassID != null)
+                studentDTO.ClassDTO = new ConvertDataClass().ConvertDataClassToDTO(student.Class);
             return studentDTO;
         }
         public Student ConvertDataStudentToEF(StudentDTO studentDTO)
@@ -28,7 +33,11 @@ namespace CentManagerment.BU.ConvertData
             {
                 StudentClassID = studentDTO.StudentClassID,
                 StudentMark = studentDTO.StudentMark,
-                StudentName = studentDTO.StudentName
+                StudentName = studentDTO.StudentName,
+                StudentAdress = studentDTO.StudentAdress,
+                StudentEmail = studentDTO.StudentEmail,
+                StudentPhone = studentDTO.StudentPhone,
+                StudentSchoolFee = studentDTO.StudentSchoolFee
             };
             if(studentDTO.StudentId > 0)
             {

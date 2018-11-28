@@ -73,6 +73,10 @@
     <EntitySetMapping Name="Student">
       <EntityTypeMapping TypeName="CentManagermentModel.Student">
         <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
+          <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+          <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+          <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
           <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
           <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
           <ScalarProperty Name="StudentName" ColumnName="StudentName" />
