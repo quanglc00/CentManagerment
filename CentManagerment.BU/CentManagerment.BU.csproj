@@ -51,6 +51,7 @@
     <Compile Include="ConvertData\ConvertDataClass.cs" />
     <Compile Include="ConvertData\ConvertDataCourse.cs" />
     <Compile Include="ConvertData\ConvertDataNews.cs" />
+    <Compile Include="ConvertData\ConvertDataRegisterManagerment.cs" />
     <Compile Include="ConvertData\ConvertDataRevenue.cs" />
     <Compile Include="ConvertData\ConvertDataRole.cs" />
     <Compile Include="ConvertData\ConvertDataRoleManager.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="DataManager\ClassManager.cs" />
     <Compile Include="DataManager\CourseManager.cs" />
     <Compile Include="DataManager\NewsManager.cs" />
+    <Compile Include="DataManager\RegisterManager.cs" />
     <Compile Include="DataManager\RevenueManager.cs" />
     <Compile Include="DataManager\RoleManager.cs" />
     <Compile Include="DataManager\RoleManagerManager.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="DTO\CourseDTO.cs" />
     <Compile Include="DTO\ExpenditureDTO.cs" />
     <Compile Include="DTO\NewsDTO.cs" />
+    <Compile Include="DTO\RegisterManagermentDTO.cs" />
     <Compile Include="DTO\RevenueDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\RoleManagerDTO.cs" />

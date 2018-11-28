@@ -79,6 +79,10 @@
     $('#sendrequest').click(function () {
         return false;
     });
+
+    $('.icon-menu').click(function () {
+        //alert("Hi");
+    });
     //$('#addst').click(function () {
     //    var stdto = {
     //        StudentPhone: $('#stphone').val(),

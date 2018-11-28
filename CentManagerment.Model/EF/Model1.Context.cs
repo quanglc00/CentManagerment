@@ -35,5 +35,6 @@ namespace CentManagerment.Model.EF
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<UserManager> UserManager { get; set; }
+        public virtual DbSet<RegisterManagerment> RegisterManagerment { get; set; }
     }
 }

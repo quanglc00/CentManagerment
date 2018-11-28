@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CentManagerment.BU.DataManager;
+using CentManagerment.BU.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -65,6 +67,15 @@ namespace CentManagerment.Controllers
                 {
                     smtp.Send(mess);
                 }
+                var registerDTO = new RegisterManagermentDTO()
+                {
+                    register_email = email,
+                    register_course = course,
+                    register_name = name,
+                    register_phone = phone,
+                    register_status = 0 //Chưa xác nhận thông tin
+                };
+                var insert = new RegisterManager().StudentManagerInsert(registerDTO);
                 ViewBag.ShowInfo = "Gửi thành công! Hãy tham khảo các khóa học và đăng ký tiếp nhé ^.^";
             }
             catch (Exception)

@@ -20,6 +20,7 @@
         <AssociationConnector Association="CentManagermentModel.FK_Revenue_Expenditure" />
         <AssociationConnector Association="CentManagermentModel.FK_News_Users" />
         <AssociationConnector Association="CentManagermentModel.FK_Revenues_Students" />
+        <EntityTypeShape EntityType="CentManagermentModel.RegisterManagerment" Width="1.5" PointX="5.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

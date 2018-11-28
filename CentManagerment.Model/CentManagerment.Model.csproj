@@ -53,6 +53,7 @@
     <Compile Include="DAO\ClassDAO.cs" />
     <Compile Include="DAO\CourseDAO.cs" />
     <Compile Include="DAO\NewsDAO.cs" />
+    <Compile Include="DAO\RegisterDAO.cs" />
     <Compile Include="DAO\RevenueDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\RoleManagerDAO.cs" />
@@ -84,6 +85,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="EF\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\RegisterManagerment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Revenue.cs">
