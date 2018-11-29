@@ -217,7 +217,6 @@
     <Content Include="Assets\admin\images\vipd.png" />
     <Content Include="Assets\admin\images\vipdb.png" />
     <Content Include="Assets\admin\js\dat.js" />
-    <Content Include="Assets\admin\js\JavaScript.js" />
     <Content Include="Assets\admin\js\Quangjs.js" />
     <Content Include="Assets\admin\js\script.js" />
     <Content Include="Assets\admin\js\validation.js" />
@@ -1923,7 +1922,7 @@
     <Content Include="Areas\Admin\Views\CourseManagerment\InsertView.cshtml" />
     <Content Include="Areas\Admin\Views\CourseManagerment\UpdateView.cshtml" />
     <Content Include="Areas\Admin\Views\Employee\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Employee\InsertEployee.cshtml" />
+    <Content Include="Areas\Admin\Views\Employee\InsertEmployee.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

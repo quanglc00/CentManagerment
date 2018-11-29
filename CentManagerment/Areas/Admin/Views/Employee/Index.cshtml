@@ -2,17 +2,21 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var listUser = (List<CentManagerment.BU.DTO.UserManagerDTO>)ViewBag.ListUser;
     var dem = 0;
+    var somuc = 0;
 }
-
+@foreach (var item in listUser)
+{
+    somuc++;
+}
 <div class="content-header content-header-wrap">
-    <h1 class="fleft">Nhân viên</h1><a class="btn--primary__edit btn--add" href="@Url.Action("InsertEployee","Employee")">Thêm mới</a>
+    <h1 class="fleft">Nhân viên</h1><a class="btn--primary__edit btn--add" href="@Url.Action("InsertEmployee","Employee")">Thêm mới</a>
     <div class="clearfix"></div>
 </div>
 <section class="nhanvien" id="nhanvien">
     <!--.section-top3-wrap-->
     <div class="section-top2 section-top2-wrap">
         <div class="row-section">
-            <span class="total-file"><span class="total--title">Tổng số:</span><span class="total-file2">4 </span>mục</span>
+            <span class="total-file"><span class="total--title">Tổng số:</span><span class="total-file2">@somuc </span>Tài khoản</span>
         </div>
     </div>
     <div class="list-rent__content section-table table-extend doanhnghiep__table">
@@ -57,7 +61,7 @@
                             <i class="fa fa-plus-circle"></i>
                             <ul>
                                 <li>Sửa</li>
-                                <li>Xóa</li>
+                                <li class="deleteUser">Xóa</li>
                             </ul>
                         </span>
                     </td>
@@ -89,17 +93,17 @@
                                         <input type="text" class="FullName" value="@item.FullName" />
                                     </div>
                                     <div class="form__table-col-6">
+                                        <label for="">Số điện thoại:</label>
+                                        <input type="text" class="UserPhoneNumber" value="@item.UserPhoneNumber" />
+                                    </div>
+                                    <div class="form__table-col-6">
                                         <label for="">Mật khẩu mới:</label>
                                         <input type="password" class="UserPassword" />
                                     </div>
-                                    <div class="form__table-col-6">
-                                        <label for="">Số điện thoại:</label>
-                                        <input type="text" class="UserPhoneNumber" />
-                                    </div>
                                 </div>
                                 <div class="fixed__button text-right">
-                                    <input type="button" value="Hủy" class="cancelEditUser" />
-                                    <input type="submit" value="Lưu chỉnh sửa" onclick="EditUserManager(@dem)" />
+                                    <input type="reset" value="Hủy" class="cancelEditUser" />
+                                    <input type="button" value="Lưu chỉnh sửa" onclick="EditUserManager(@dem)" />
                                 </div>
                             </form>
                         </div>
@@ -110,7 +114,7 @@
         </table>
         <div class="list-rent__bottom">
             <div class="list-rent__bottom--content section-buttons text-right">
-                <span class="total-file">147 mục</span>
+                <span class="total-file">@somuc mục</span>                
                 <button><i class="fa fa-angle-double-left"></i></button>
                 <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
                 <button><i class="fa fa-angle-right"></i></button>

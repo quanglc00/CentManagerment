@@ -24,7 +24,7 @@ namespace CentManagerment.Areas.Admin.Controllers
                 resultCode = true;
             return Json( resultCode , JsonRequestBehavior.AllowGet);
         }
-        public ActionResult InsertEployee()
+        public ActionResult InsertEmployee()
         {
             return View();
         }
@@ -32,6 +32,13 @@ namespace CentManagerment.Areas.Admin.Controllers
         {
             bool resultCode = false;
             if (new UserManagerManager().UserManagerManagerInsert(userManager))
+                resultCode = true;
+            return Json(resultCode, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteUser(UserManagerDTO userManager)
+        {
+            bool resultCode = false;
+            if (new UserManagerManager().UserManagerManagerDelete(userManager))
                 resultCode = true;
             return Json(resultCode, JsonRequestBehavior.AllowGet);
         }
