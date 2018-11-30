@@ -39,13 +39,12 @@ namespace CentManagerment.Model.DAO
         // use using to open and close connection
         public bool Delete(RoleManager roleManager)
         {
-                using (db = new CentManagermentEntities())
-                {
-                db.RoleManager.Remove(roleManager);
+            using (db = new CentManagermentEntities())
+            {
+                db.RoleManager.Remove(db.RoleManager.Find(roleManager.RoleManagerId));
                 db.SaveChanges();
             }
             return true;
-
 
         }
     }

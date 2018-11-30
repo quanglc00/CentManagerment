@@ -53,5 +53,16 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
+        public List<RoleManagerDTO> GetListRoleManagerByUserID(UserManagerDTO user)
+        {
+            var list = db.RoleManager.ToList();
+            var listDTO = new List<RoleManagerDTO>();
+            foreach (var item in list)
+            {
+                if (item.RoleManagerUserId == user.UserId)
+                    listDTO.Add(new ConvertDataRoleManager().ConvertDataRoleManagerToDTO(item));
+            }
+            return listDTO;
+        }
     }
 }
