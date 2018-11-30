@@ -21,11 +21,26 @@ namespace CentManagerment.BU.DataManager
         {
             try
             {
-                return new UserManagerDAO().Insert(new ConvertDataUserManager().ConvertDataUserManagerToEF(UserManager));
+                new UserManagerDAO().Insert(new ConvertDataUserManager().ConvertDataUserManagerToEF(UserManager));
+                var listRole = db.Role.ToList();
+                var userId = db.UserManager.OrderByDescending(p => p.UserId).FirstOrDefault().UserId;
+                if (UserManager.UserType == 1)
+                {
+                    foreach (var item in listRole)
+                    {
+                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
+                            new RoleManagerDTO{ RoleManagerUserId = userId, RoleManagerRoleId = item.RoleId }));
+                    }
+                }
+                else
+                {
+                    new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
+                        new RoleManagerDTO{ RoleManagerUserId = userId, RoleManagerRoleId = 1 }));
+                }
+                return true;
             }
             catch (Exception)
-            {
-                
+            {                
                 return false;
             }
         }

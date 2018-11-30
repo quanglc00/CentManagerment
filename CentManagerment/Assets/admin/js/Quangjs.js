@@ -56,13 +56,19 @@ $('.InsertEmployee').on('click',function() {
             url: "/Admin/Employee/AddUser",
             data: { userManager: User },
             success: function (resultCode) {
-                if (resultCode) {
+                if (resultCode === 1) {
                     alert("Thêm Thành Công!");
                     window.location.href = "/Admin/Employee";
                     return true;
                 }
+                else if (resultCode === 2) {
+                    alert("Tên tài khoản đã tồn tại");
+                    $('.UserName').val("");
+                    $('.UserName').focus();
+                    return false;
+                }
                 else {
-                    alert("Thêm Thất Bại");
+                    alert("Có lỗi khi thêm tài khoản");
                     return false;
                 }
             }
