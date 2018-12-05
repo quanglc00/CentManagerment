@@ -1,6 +1,11 @@
-﻿using System;
+﻿using CentManagerment.BU.DataManager;
+using CentManagerment.BU.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,6 +30,59 @@ namespace CentManagerment.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+
+        //send mail
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SendEmail(string name, string phone, string email, int course)
+        {
+            try
+            {
+                var fromEmail = "demoproject.3fgroup@gmail.com";
+                var toEmail = "3fdatdev@gmail.com";
+                var senderEmail = new MailAddress(fromEmail, "Jamil");
+                var receiverEmail = new MailAddress(toEmail, "Receiver");
+                var password = "3fk11997";
+                var sub = "Register";
+                var message = " A new register student: <br /> Mail: " + email + ",  Name: " + name + ",  Phone: " + phone + ", Cousre: N" + course;
+                var body = message;
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = sub,
+                    Body = message,
+                    IsBodyHtml = true
+                })
+                {
+                    smtp.Send(mess);
+                }
+                var registerDTO = new RegisterManagermentDTO()
+                {
+                    register_email = email,
+                    register_course = course,
+                    register_name = name,
+                    register_phone = phone,
+                    register_status = 0 //Chưa xác nhận thông tin
+                };
+                var insert = new RegisterManager().StudentManagerInsert(registerDTO);
+                ViewBag.ShowInfo = "Gửi thành công! Hãy tham khảo các khóa học và đăng ký tiếp nhé ^.^";
+            }
+            catch (Exception)
+            {
+                ViewBag.ShowInfo = "Đã xảy ra lỗi! Bạn quay lại đăng ký sau nhé! Hãy thao khảo các khóa học tiếp đi nhé ^.^";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -24,6 +24,8 @@ namespace CentManagerment.Model.EF
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public Nullable<int> UserType { get; set; }
+        public string FullName { get; set; }
+        public string UserPhoneNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }

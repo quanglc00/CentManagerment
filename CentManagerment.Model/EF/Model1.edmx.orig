@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CentManagermentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassAmountStudent" Type="int" />
+          <Property Name="ClassCourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseTime" Type="nvarchar" MaxLength="100" />
+          <Property Name="CousePrice" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Expenditure">
+          <Key>
+            <PropertyRef Name="ExpenditureId" />
+          </Key>
+          <Property Name="ExpenditureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenditureName" Type="ntext" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsContent" Type="ntext" />
+          <Property Name="NewsShortContent" Type="ntext" />
+          <Property Name="NewsPostDate" Type="date" />
+          <Property Name="NewsTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="NewsUserID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RegisterManagerment">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="register_name" Type="nvarchar" MaxLength="69" />
+          <Property Name="register_phone" Type="nvarchar" MaxLength="16" />
+          <Property Name="register_email" Type="nvarchar" MaxLength="69" />
+          <Property Name="register_course" Type="int" />
+          <Property Name="register_status" Type="int" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="RevenueId" />
+          </Key>
+          <Property Name="RevenueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RevenueStartPaymentDay" Type="date" />
+          <Property Name="RevenuePrice" Type="int" />
+          <Property Name="RevenueStudentId" Type="int" />
+          <Property Name="ExpenditureId" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoleManager">
+          <Key>
+            <PropertyRef Name="RoleManagerId" />
+          </Key>
+          <Property Name="RoleManagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleManagerUserId" Type="int" />
+          <Property Name="RoleManagerRoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentMark" Type="int" />
+          <Property Name="StudentClassID" Type="int" />
+          <Property Name="StudentSchoolFee" Type="float" />
+          <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
+          <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
+          <Property Name="StudentAdress" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="180" />
+          <Property Name="TimeToWork" Type="int" />
+          <Property Name="PricePerHour" Type="int" />
+          <Property Name="LevelEducation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="UserManager">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="69" />
+          <Property Name="UserPhoneNumber" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <Association Name="FK_Classes_Courses">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ClassCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="UserManager" Type="Self.UserManager" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserManager">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="NewsUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_Expenditure">
+          <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="0..1" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditure">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="ExpenditureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenues_Students">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="RevenueStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Classes">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="StudentClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CentManagermentModelStoreContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expenditure" EntityType="Self.Expenditure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleManager" EntityType="Self.RoleManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserManager" EntityType="Self.UserManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterManagerment" EntityType="Self.RegisterManagerment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RegisterManagerment].[register_id] AS [register_id], 
+    [RegisterManagerment].[register_name] AS [register_name], 
+    [RegisterManagerment].[register_phone] AS [register_phone], 
+    [RegisterManagerment].[register_email] AS [register_email], 
+    [RegisterManagerment].[register_course] AS [register_course], 
+    [RegisterManagerment].[register_status] AS [register_status]
+    FROM [dbo].[RegisterManagerment] AS [RegisterManagerment]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Classes_Courses" Association="Self.FK_Classes_Courses">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="UserManager" EntitySet="UserManager" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Expenditure" Association="Self.FK_Revenue_Expenditure">
+            <End Role="Expenditure" EntitySet="Expenditure" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenues_Students" Association="Self.FK_Revenues_Students">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CentManagermentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<<<<<<< HEAD
+=======
+        <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Class" EntityType="CentManagermentModel.Class" />
+          <EntitySet Name="Course" EntityType="CentManagermentModel.Course" />
+          <EntitySet Name="Expenditure" EntityType="CentManagermentModel.Expenditure" />
+          <EntitySet Name="News" EntityType="CentManagermentModel.News" />
+          <EntitySet Name="Revenue" EntityType="CentManagermentModel.Revenue" />
+          <EntitySet Name="Role" EntityType="CentManagermentModel.Role" />
+          <EntitySet Name="RoleManager" EntityType="CentManagermentModel.RoleManager" />
+          <EntitySet Name="Student" EntityType="CentManagermentModel.Student" />
+          <EntitySet Name="Teacher" EntityType="CentManagermentModel.Teacher" />
+          <EntitySet Name="UserManager" EntityType="CentManagermentModel.UserManager" />
+          <EntitySet Name="RegisterManagerment" EntityType="CentManagermentModel.RegisterManagerment" />
+          <AssociationSet Name="FK_Classes_Courses" Association="CentManagermentModel.FK_Classes_Courses">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classes" Association="CentManagermentModel.FK_Students_Classes">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Expenditure" Association="CentManagermentModel.FK_Revenue_Expenditure">
+            <End Role="Expenditure" EntitySet="Expenditure" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="CentManagermentModel.FK_News_Users">
+            <End Role="UserManager" EntitySet="UserManager" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenues_Students" Association="CentManagermentModel.FK_Revenues_Students">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+        </EntityContainer>
+>>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassAmountStudent" Type="Int32" />
+          <Property Name="ClassCourseId" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Classes_Courses" FromRole="Class" ToRole="Course" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classes" FromRole="Class" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CousePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Courses" FromRole="Course" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Expenditure">
+          <Key>
+            <PropertyRef Name="ExpenditureId" />
+          </Key>
+          <Property Name="ExpenditureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenditureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenue_Expenditure" FromRole="Expenditure" ToRole="Revenue" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsId" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsShortContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsPostDate" Type="DateTime" Precision="0" />
+          <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NewsUserID" Type="Int32" />
+          <NavigationProperty Name="UserManager" Relationship="Self.FK_News_Users" FromRole="News" ToRole="UserManager" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="RevenueId" />
+          </Key>
+          <Property Name="RevenueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RevenueStartPaymentDay" Type="DateTime" Precision="0" />
+          <Property Name="RevenuePrice" Type="Int32" />
+          <Property Name="RevenueStudentId" Type="Int32" />
+          <Property Name="ExpenditureId" Type="Int32" />
+          <NavigationProperty Name="Expenditure" Relationship="Self.FK_Revenue_Expenditure" FromRole="Revenue" ToRole="Expenditure" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Revenues_Students" FromRole="Revenue" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleManager">
+          <Key>
+            <PropertyRef Name="RoleManagerId" />
+          </Key>
+          <Property Name="RoleManagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleManagerUserId" Type="Int32" />
+          <Property Name="RoleManagerRoleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentMark" Type="Int32" />
+          <Property Name="StudentClassID" Type="Int32" />
+<<<<<<< HEAD
+          <NavigationProperty Name="Class" Relationship="Self.FK_Students_Classes" FromRole="Student" ToRole="Class" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
+=======
+          <Property Name="StudentSchoolFee" Type="Double" />
+          <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="StudentAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Student" ToRole="Class" />
+          <NavigationProperty Name="Revenue" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
+>>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <Property Name="TimeToWork" Type="Int32" />
+          <Property Name="PricePerHour" Type="Int32" />
+          <Property Name="LevelEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserManager">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Int32" />
+<<<<<<< HEAD
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="UserManager" ToRole="News" />
+=======
+          <Property Name="FullName" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
+>>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
+        </EntityType>
+        <EntityType Name="RegisterManagerment">
+          <Key>
+            <PropertyRef Name="register_id" />
+          </Key>
+          <Property Name="register_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="register_name" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="register_phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="register_email" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+          <Property Name="register_course" Type="Int32" />
+          <Property Name="register_status" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Classes_Courses">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ClassCourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Classes">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="StudentClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_Expenditure">
+          <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="0..1" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expenditure">
+              <PropertyRef Name="ExpenditureId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="ExpenditureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Users">
+          <End Role="UserManager" Type="Self.UserManager" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserManager">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="NewsUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenues_Students">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="RevenueStudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Expenditures" EntityType="Self.Expenditure" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Revenues" EntityType="Self.Revenue" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="RoleManagers" EntityType="Self.RoleManager" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="UserManagers" EntityType="Self.UserManager" />
+          <AssociationSet Name="FK_Classes_Courses" Association="Self.FK_Classes_Courses">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Expenditure" Association="Self.FK_Revenue_Expenditure">
+            <End Role="Expenditure" EntitySet="Expenditures" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="UserManager" EntitySet="UserManagers" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenues_Students" Association="Self.FK_Revenues_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CentManagermentModelStoreContainer" CdmEntityContainer="CentManagermentEntities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="CentManagermentModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassAmountStudent" ColumnName="ClassAmountStudent" />
+                <ScalarProperty Name="ClassCourseId" ColumnName="ClassCourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="CentManagermentModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseTime" ColumnName="CourseTime" />
+                <ScalarProperty Name="CousePrice" ColumnName="CousePrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenditures">
+            <EntityTypeMapping TypeName="CentManagermentModel.Expenditure">
+              <MappingFragment StoreEntitySet="Expenditure">
+                <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
+                <ScalarProperty Name="ExpenditureName" ColumnName="ExpenditureName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="CentManagermentModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
+                <ScalarProperty Name="NewsShortContent" ColumnName="NewsShortContent" />
+                <ScalarProperty Name="NewsPostDate" ColumnName="NewsPostDate" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="NewsUserID" ColumnName="NewsUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revenues">
+            <EntityTypeMapping TypeName="CentManagermentModel.Revenue">
+              <MappingFragment StoreEntitySet="Revenue">
+                <ScalarProperty Name="RevenueId" ColumnName="RevenueId" />
+                <ScalarProperty Name="RevenueStartPaymentDay" ColumnName="RevenueStartPaymentDay" />
+                <ScalarProperty Name="RevenuePrice" ColumnName="RevenuePrice" />
+                <ScalarProperty Name="RevenueStudentId" ColumnName="RevenueStudentId" />
+                <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CentManagermentModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleManagers">
+            <EntityTypeMapping TypeName="CentManagermentModel.RoleManager">
+              <MappingFragment StoreEntitySet="RoleManager">
+                <ScalarProperty Name="RoleManagerId" ColumnName="RoleManagerId" />
+                <ScalarProperty Name="RoleManagerUserId" ColumnName="RoleManagerUserId" />
+                <ScalarProperty Name="RoleManagerRoleId" ColumnName="RoleManagerRoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CentManagermentModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+<<<<<<< HEAD
+=======
+                <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
+                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
+                <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
+                <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+>>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
+                <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="CentManagermentModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TimeToWork" ColumnName="TimeToWork" />
+                <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
+                <ScalarProperty Name="LevelEducation" ColumnName="LevelEducation" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserManagers">
+            <EntityTypeMapping TypeName="CentManagermentModel.UserManager">
+              <MappingFragment StoreEntitySet="UserManager">
+<<<<<<< HEAD
+=======
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+>>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterManagerment">
+            <EntityTypeMapping TypeName="CentManagermentModel.RegisterManagerment">
+              <MappingFragment StoreEntitySet="RegisterManagerment">
+                <ScalarProperty Name="register_status" ColumnName="register_status" />
+                <ScalarProperty Name="register_course" ColumnName="register_course" />
+                <ScalarProperty Name="register_email" ColumnName="register_email" />
+                <ScalarProperty Name="register_phone" ColumnName="register_phone" />
+                <ScalarProperty Name="register_name" ColumnName="register_name" />
+                <ScalarProperty Name="register_id" ColumnName="register_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -11,9 +11,6 @@ namespace CentManagerment.Model.DAO
     {
         CentManagermentEntities db = null;
         // use using to open and close connection
-        public ClassDAO()
-        {
-        }
         public bool Insert(Class cl)
         {
             using ( db = new CentManagermentEntities())
@@ -40,11 +37,12 @@ namespace CentManagerment.Model.DAO
 
         }
         // use using to open and close connection
-        public bool Delete(Class cl)
+        public bool Delete(int cl)
         {
             using (db = new CentManagermentEntities())
             {
-                db.Classes.Remove(cl);
+                var delete = db.Class.Find(cl);
+                db.Class.Remove(delete);
                 db.SaveChanges();
             }
             return true;
