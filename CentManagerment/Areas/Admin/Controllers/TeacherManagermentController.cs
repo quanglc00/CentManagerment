@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class TeacherManagermentController : Controller
+    public class TeacherManagermentController : BaseController
     {
         // GET: Admin/TeacherManagerment
         public ActionResult Index(int page = 1)

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class ClassManagermentController : Controller
+    public class ClassManagermentController : BaseController
     {
         // khai bao bien manager
 

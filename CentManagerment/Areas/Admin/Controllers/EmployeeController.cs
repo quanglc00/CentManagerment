@@ -10,21 +10,14 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseController
     {
         // GET: Employee
         [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public ActionResult Index()
         {
-            if (Session[CommonUserLogin.USER_SESSION] != null)
-            {
                 ViewBag.ListUser = new UserManagerManager().GetListUserManagers();
                 return View();
-            }
-            else
-            {
-                return Redirect("/Admin/Login");
-            }
         }
         [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public ActionResult InsertEmployee()

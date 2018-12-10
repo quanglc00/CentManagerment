@@ -33,13 +33,12 @@ namespace CentManagerment.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Sai tên tài khoản hoặc mật khẩu!");
                     return View();
                 }
             }
             else
             {
-                return Redirect("/Admin/Login");
+                return View();
             }
         }
     }

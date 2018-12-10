@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class CourseManagermentController : Controller
+    public class CourseManagermentController : BaseController
     {
         public readonly CourseManager courseManager = new CourseManager();
         // GET: Admin/CourseManagerment
