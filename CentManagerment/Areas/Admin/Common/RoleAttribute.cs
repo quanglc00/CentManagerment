@@ -16,6 +16,8 @@ namespace CentManagerment.Areas.Admin.Common
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             var session = (UserManagerDTO)HttpContext.Current.Session[CommonUserLogin.USER_SESSION];
+            if (session == null)
+                return false;
             List<int> listRole = this.GetRoleBySessionLogin(session.UserName);
             if (listRole.Contains(this.RoleID))
             {

@@ -33,12 +33,12 @@ namespace CentManagerment.Areas.Admin.Controllers
                 }
                 else
                 {
-                    return View();
+                    return Redirect("/Admin/Login");
                 }
             }
             else
             {
-                return View();
+                return Redirect("/Admin/Login");
             }
         }
     }
