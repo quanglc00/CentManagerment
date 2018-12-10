@@ -57,7 +57,7 @@ namespace CentManagerment.BU.DataManager
             List<Course> listCourse = new List<Course>();
             using (var db = new CentManagermentEntities())
             {
-                listCourse = db.Course.ToList();
+                listCourse = db.Courses.ToList();
 
             }
             foreach (var mb in listCourse)
@@ -76,10 +76,10 @@ namespace CentManagerment.BU.DataManager
             List<Course> listCourse = new List<Course>();
             using (db = new CentManagermentEntities())
             {
-                listCourse = db.Course.ToList();
+                listCourse = db.Courses.ToList();
                 if(!String.IsNullOrEmpty(searchString))
                 {
-                    listCourse = db.Course.Where(x => x.CourseName.Contains(searchString) ||
+                    listCourse = db.Courses.Where(x => x.CourseName.Contains(searchString) ||
                     x.CourseTime.Contains(searchString) ||
                     x.CousePrice.ToString().Contains(searchString)).ToList();
                 }
@@ -99,7 +99,7 @@ namespace CentManagerment.BU.DataManager
         {
             using (db = new CentManagermentEntities())
             {
-                return convertData.ConvertDataCourseToDTO(db.Course.SingleOrDefault(x => x.CourseId == courseId));
+                return convertData.ConvertDataCourseToDTO(db.Courses.SingleOrDefault(x => x.CourseId == courseId));
             }
         }
 

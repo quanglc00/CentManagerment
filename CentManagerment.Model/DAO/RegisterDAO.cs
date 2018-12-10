@@ -16,7 +16,7 @@ namespace CentManagerment.Model.DAO
             {
                 try
                 {
-                    db.RegisterManagerment.Add(register);
+                    db.RegisterManagerments.Add(register);
                     db.SaveChanges();
                     return true;
 

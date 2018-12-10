@@ -76,10 +76,10 @@ namespace CentManagerment.BU.DataManager
             List<Class> listClass = new List<Class>();
             using (db = new CentManagermentEntities())
             {
-                listClass = db.Class.ToList();
+                listClass = db.Classes.ToList();
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    listClass = db.Class.Where(x => x.ClassName.Contains(searchString) ||
+                    listClass = db.Classes.Where(x => x.ClassName.Contains(searchString) ||
                     x.ClassAmountStudent.ToString().Contains(searchString)).ToList();
                 }
                 foreach (var mb in listClass)
@@ -96,7 +96,7 @@ namespace CentManagerment.BU.DataManager
         {
             using (db = new CentManagermentEntities())
             {
-                return new ConvertDataClass().ConvertDataClassToDTO(db.Class.Find(classId));
+                return new ConvertDataClass().ConvertDataClassToDTO(db.Classes.Find(classId));
             }
         }
     }

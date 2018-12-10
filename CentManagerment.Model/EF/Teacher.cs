@@ -17,12 +17,8 @@ namespace CentManagerment.Model.EF
         public int TeacherId { get; set; }
         public string TeacherName { get; set; }
         public Nullable<int> Age { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
         public Nullable<int> TimeToWork { get; set; }
         public Nullable<int> PricePerHour { get; set; }
         public string LevelEducation { get; set; }
-        public Nullable<int> Status { get; set; }
     }
 }

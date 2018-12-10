@@ -41,13 +41,13 @@ namespace CentManagerment.Model.DAO
                     var teacherUpdate = db.Teachers.FirstOrDefault(x => x.TeacherId == teacher.TeacherId);
                     teacherUpdate.TeacherName = teacher.TeacherName;
                     teacherUpdate.Age = teacher.Age;
-                    teacherUpdate.PhoneNumber = teacher.PhoneNumber;
-                    teacherUpdate.Address = teacher.Address;
-                    teacherUpdate.Email = teacher.Email;
+                    //teacherUpdate.PhoneNumber = teacher.PhoneNumber;
+                    //teacherUpdate.Address = teacher.Address;
+                    //teacherUpdate.Email = teacher.Email;
                     teacherUpdate.TimeToWork = teacher.TimeToWork;
                     teacherUpdate.PricePerHour = teacher.PricePerHour;
                     teacherUpdate.LevelEducation = teacher.LevelEducation;
-                    teacherUpdate.Status = teacher.Status;
+                    //teacherUpdate.Status = teacher.Status;
                     db.SaveChanges();
                     return true;
                 }

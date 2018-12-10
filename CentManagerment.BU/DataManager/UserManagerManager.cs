@@ -22,8 +22,8 @@ namespace CentManagerment.BU.DataManager
             try
             {
                 new UserManagerDAO().Insert(new ConvertDataUserManager().ConvertDataUserManagerToEF(UserManager));
-                var listRole = db.Role.ToList();
-                var userId = db.UserManager.OrderByDescending(p => p.UserId).FirstOrDefault().UserId;
+                var listRole = db.Roles.ToList();
+                var userId = db.UserManagers.OrderByDescending(p => p.UserId).FirstOrDefault().UserId;
                 if (UserManager.UserType == 1)
                 {
                     foreach (var item in listRole)
@@ -34,8 +34,11 @@ namespace CentManagerment.BU.DataManager
                 }
                 else
                 {
-                    new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                        new RoleManagerDTO { RoleManagerUserId = userId, RoleManagerRoleId = 1 }));
+                    for (int i = 1; i < 7; i++)
+                    {
+                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
+                            new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = i }));
+                    }
                 }
                 return true;
             }
@@ -49,7 +52,7 @@ namespace CentManagerment.BU.DataManager
             try
             {
                 new UserManagerDAO().Update(new ConvertDataUserManager().ConvertDataUserManagerToEF(UserManager));
-                var listRole = db.Role.ToList();
+                var listRole = db.Roles.ToList();
                 if (UserManager.UserType == 1)
                 {
                     var listRoleManagerByUserId = new RoleManagerManager().GetListRoleManagerByUserID(UserManager);
@@ -70,8 +73,11 @@ namespace CentManagerment.BU.DataManager
                     {
                         new RoleManagerManager().RoleManagerManagerDelete(item);
                     }
-                    new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                        new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = 1 }));
+                    for (int i = 1; i < 7; i++)
+                    {
+                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
+                            new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = i }));
+                    }
                 }
                 return true;
             }
@@ -101,13 +107,39 @@ namespace CentManagerment.BU.DataManager
         }
         public List<UserManagerDTO> GetListUserManagers()
         {
-            var list = db.UserManager.ToList();
-            var listDTO = new List<UserManagerDTO>();
-            foreach (var item in list)
+            try
             {
-                listDTO.Add(new ConvertDataUserManager().ConvertDataUserManagerToDTO(item));
+                var list = db.UserManagers.ToList();
+                var listDTO = new List<UserManagerDTO>();
+                foreach (var item in list)
+                {
+                    listDTO.Add(new ConvertDataUserManager().ConvertDataUserManagerToDTO(item));
+                }
+                return listDTO;
             }
-            return listDTO;
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public UserManagerDTO LoginUserByLoginModel(LoginModelDTO loginModel)
+        {
+            try
+            {
+                var user = new UserManager();
+                user = db.UserManagers.FirstOrDefault(x => x.UserName == loginModel.UserName && x.UserPassword == loginModel.UserPassword);
+                if (user != null)
+                {
+                    var userFind = new ConvertDataUserManager().ConvertDataUserManagerToDTO(user);
+                    return userFind;
+                }
+                else
+                    return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

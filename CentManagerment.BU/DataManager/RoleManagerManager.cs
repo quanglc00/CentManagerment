@@ -55,7 +55,7 @@ namespace CentManagerment.BU.DataManager
         }
         public List<RoleManagerDTO> GetListRoleManagerByUserID(UserManagerDTO user)
         {
-            var list = db.RoleManager.ToList();
+            var list = db.RoleManagers.ToList();
             var listDTO = new List<RoleManagerDTO>();
             foreach (var item in list)
             {
@@ -63,6 +63,19 @@ namespace CentManagerment.BU.DataManager
                     listDTO.Add(new ConvertDataRoleManager().ConvertDataRoleManagerToDTO(item));
             }
             return listDTO;
+        }
+        public List<int> GetListRoleIdByUserName(string userName)
+        {
+            var list = from a in db.RoleManagers
+                       join b in db.Roles on a.RoleManagerRoleId equals b.RoleId
+                       join c in db.UserManagers on a.RoleManagerUserId equals c.UserId
+                       where c.UserName == userName
+                       select new RoleManagerDTO
+                       {
+                           RoleManagerRoleId = a.RoleManagerRoleId,
+                           RoleManagerUserId = a.RoleManagerUserId
+                       };
+            return list.Select(x => x.RoleManagerRoleId.Value).ToList();
         }
     }
 }

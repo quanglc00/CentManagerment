@@ -21,15 +21,15 @@ namespace CentManagerment.BU.ConvertData
             var TeacherDTO = new TeacherDTO()
             {
                 Age = cl.Age,
-                Address = cl.Address,
-                Email = cl.Email,
-                PhoneNumber = cl.PhoneNumber,
+                //Address = cl.Address,
+                //Email = cl.Email,
+                //PhoneNumber = cl.PhoneNumber,
                 LevelEducation = cl.LevelEducation,
                 PricePerHour = cl.PricePerHour,
                 TeacherName = cl.TeacherName,
                 TimeToWork = cl.TimeToWork,
                 TeacherId = cl.TeacherId,
-                Status = cl.Status
+                //Status = cl.Status
             };
             // Chuyển trạng thái về text
             switch (TeacherDTO.Status)
@@ -55,15 +55,15 @@ namespace CentManagerment.BU.ConvertData
         {
             var TeacherEF = new Teacher()
             {
-                Age = TeacherDTO.Age,
-                Address = TeacherDTO.Address,
-                Email = TeacherDTO.Email,
-                PhoneNumber = TeacherDTO.PhoneNumber,
+                //Age = TeacherDTO.Age,
+                //Address = TeacherDTO.Address,
+                //Email = TeacherDTO.Email,
+                //PhoneNumber = TeacherDTO.PhoneNumber,
                 LevelEducation = TeacherDTO.LevelEducation,
                 PricePerHour = TeacherDTO.PricePerHour,
                 TeacherName = TeacherDTO.TeacherName,
                 TimeToWork = TeacherDTO.TimeToWork,
-                Status = TeacherDTO.Status
+                //Status = TeacherDTO.Status
             };
             if (TeacherDTO.TeacherId > 0)
             {

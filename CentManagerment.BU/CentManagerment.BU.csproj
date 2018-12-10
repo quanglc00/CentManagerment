@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommonUserLogin.cs" />
+    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="ConvertData\ConvertDataClass.cs" />
     <Compile Include="ConvertData\ConvertDataCourse.cs" />
     <Compile Include="ConvertData\ConvertDataExpenditure.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="DTO\CourseDTO.cs" />
     <Compile Include="DTO\ExpenditureDTO.cs" />
+    <Compile Include="DTO\LoginModelDTO.cs" />
     <Compile Include="DTO\NewsDTO.cs" />
     <Compile Include="DTO\RegisterManagermentDTO.cs" />
     <Compile Include="DTO\RevenueDTO.cs" />

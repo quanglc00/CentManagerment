@@ -39,13 +39,9 @@
                 {
                     type = "Quản Trị Viên";
                 }
-                else if (item.UserType.Equals(2))
-                {
-                    type = "Nhân Viên";
-                }
                 else
                 {
-                    type = "Không xác định";
+                    type = "Nhân Viên";
                 }
                 <tr class="userPanel">
                     <td>
@@ -82,11 +78,22 @@
                                     </div>
                                     <div class="form__table-col-33">
                                         <label for="">Vai trò:</label>
-                                        <select class="UserType">
-                                            <option value="">--Chọn vai trò--</option>
-                                            <option value="1">Quản trị viên</option>
-                                            <option value="2">Nhân viên</option>
-                                        </select>
+                                        @if (item.UserType.Equals(1))
+                                        {
+                                            <select class="UserType">
+                                                <option value="">--Chọn vai trò--</option>
+                                                <option value="1" selected>Quản trị viên</option>
+                                                <option value="2">Nhân viên</option>
+                                            </select>
+                                        }
+                                        else
+                                        {
+                                            <select class="UserType">
+                                                <option value="">--Chọn vai trò--</option>
+                                                <option value="1">Quản trị viên</option>
+                                                <option value="2"selected>Nhân viên</option>
+                                            </select>
+                                        }
                                     </div>
                                     <div class="form__table-col-6">
                                         <label for="">Họ Và Tên:</label>

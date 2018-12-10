@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CentManagerment.BU.DTO
 {
+    [Serializable]
     public class RoleManagerDTO
     {
         public int RoleManagerId { get; set; }

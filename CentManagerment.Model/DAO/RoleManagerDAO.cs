@@ -41,7 +41,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.RoleManager.Remove(db.RoleManager.Find(roleManager.RoleManagerId));
+                db.RoleManagers.Remove(db.RoleManagers.Find(roleManager.RoleManagerId));
                 db.SaveChanges();
             }
             return true;

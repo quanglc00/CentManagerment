@@ -41,7 +41,7 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                db.Course.Remove(db.Course.Find(courseId));
+                db.Courses.Remove(db.Courses.Find(courseId));
                 db.SaveChanges();
             }
             return true;

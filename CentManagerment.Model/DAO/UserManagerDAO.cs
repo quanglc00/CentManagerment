@@ -46,8 +46,8 @@ namespace CentManagerment.Model.DAO
         {
             using (db = new CentManagermentEntities())
             {
-                var userDelete = db.UserManager.FirstOrDefault(x => x.UserId == userManager.UserId);
-                db.UserManager.Remove(userDelete);
+                var userDelete = db.UserManagers.FirstOrDefault(x => x.UserId == userManager.UserId);
+                db.UserManagers.Remove(userDelete);
                 db.SaveChanges();
             }
             return true;
