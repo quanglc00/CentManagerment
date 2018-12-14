@@ -12,6 +12,10 @@ namespace CentManagerment.BU.DTO
         public string StudentName { get; set; }
         public int? StudentMark { get; set; }
         public int? StudentClassID { get; set; }
+        public double? StudentSchoolFee { get; set; }
+        public string StudentEmail { get; set; }
+        public string StudentPhone { get; set; }
+        public string StudentAdress { get; set; }
 
         public virtual ClassDTO ClassDTO { get; set; }
     }

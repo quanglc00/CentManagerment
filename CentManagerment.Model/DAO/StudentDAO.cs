@@ -23,18 +23,31 @@ namespace CentManagerment.Model.DAO
             }
 
         }
+
+
         // use using to open and close connection
 
         public bool Update(Student student)
         {
             using (db = new CentManagermentEntities())
             {
-                var studentUpdate = db.Students.FirstOrDefault(x => x.StudentId == student.StudentId);
-                studentUpdate.StudentClassID = student.StudentClassID;
-                studentUpdate.StudentMark = student.StudentMark;
-                studentUpdate.StudentName = student.StudentName;
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    var studentUpdate = db.Students.FirstOrDefault(x => x.StudentId == student.StudentId);
+                    studentUpdate.StudentPhone = student.StudentPhone;
+                    studentUpdate.StudentEmail = student.StudentEmail;
+                    studentUpdate.StudentMark = student.StudentMark;
+                    studentUpdate.StudentSchoolFee = student.StudentSchoolFee;
+                    studentUpdate.StudentMark = student.StudentMark;
+                    studentUpdate.StudentName = student.StudentName;
+                    studentUpdate.StudentAdress = student.StudentAdress;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return true;
+                }
             }
 
         }
@@ -50,5 +63,26 @@ namespace CentManagerment.Model.DAO
             }
 
         }
+
+
+        public bool DeleteById(int idStudent)
+        {
+            using (db = new CentManagermentEntities())
+            {
+                try
+                {
+                    var student = db.Students.Find(idStudent);
+                    db.Students.Remove(student);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+
+        }
+
     }
 }
