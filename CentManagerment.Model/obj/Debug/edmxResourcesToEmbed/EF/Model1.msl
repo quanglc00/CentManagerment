@@ -87,9 +87,13 @@
     <EntitySetMapping Name="Teachers">
       <EntityTypeMapping TypeName="CentManagermentModel.Teacher">
         <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="LevelEducation" ColumnName="LevelEducation" />
           <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
           <ScalarProperty Name="TimeToWork" ColumnName="TimeToWork" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
           <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />

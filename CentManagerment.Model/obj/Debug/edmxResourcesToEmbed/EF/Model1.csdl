@@ -124,9 +124,13 @@
     <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
     <Property Name="TimeToWork" Type="Int32" />
     <Property Name="PricePerHour" Type="Int32" />
     <Property Name="LevelEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="UserManager">
     <Key>
@@ -136,7 +140,7 @@
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserType" Type="Int32" />
-    <Property Name="FullName" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
   </EntityType>
