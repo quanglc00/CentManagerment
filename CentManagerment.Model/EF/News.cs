@@ -20,6 +20,7 @@ namespace CentManagerment.Model.EF
         public Nullable<System.DateTime> NewsPostDate { get; set; }
         public string NewsTitle { get; set; }
         public Nullable<int> NewsUserID { get; set; }
+        public string NewsAvatar { get; set; }
     
         public virtual UserManager UserManager { get; set; }
     }

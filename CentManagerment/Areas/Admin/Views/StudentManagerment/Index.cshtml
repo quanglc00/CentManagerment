@@ -1,14 +1,15 @@
-﻿@model List<CentManagerment.BU.DTO.StudentDTO>
+﻿
+@model PagedList.IPagedList<CentManagerment.BU.DTO.StudentDTO>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Quản lý học sinh || Danh sách học sinh";
     ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @{
-    <h1 class="fleft">Nhân viên</h1><a class="btn--primary__edit btn--add" href="@Url.Action("AddStudent","StudentManagerment")">Thêm mới</a>
+    <h1 class="fleft">Danh sách học sinh</h1><a class="btn--primary__edit btn--add" href="@Url.Action("AddStudent","StudentManagerment")">Thêm mới</a>
 }
-    <div class="clearfix"></div>
-</div>
+<div class="clearfix"></div>
 <section class="nhanvien" id="nhanvien">
     <div class="section-top3 section-top3-wrap">
         <div class="section-top3__content">
@@ -116,18 +117,10 @@
                     }
                 }
 
-<h2>Index</h2>
+                <h2>Index</h2>
             </tbody>
         </table>
-        <div class="list-rent__bottom">
-            <div class="list-rent__bottom--content section-buttons text-right">
-                <span class="total-file">147 mục</span>
-                <button><i class="fa fa-angle-double-left"></i></button>
-                <button><i class="fa fa-angle-left"></i></button><span>1 trên 8</span>
-                <button><i class="fa fa-angle-right"></i></button>
-                <button><i class="fa fa-angle-double-right"></i></button>
-            </div>
-        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.searchString }))
     </div>
 </section>
 

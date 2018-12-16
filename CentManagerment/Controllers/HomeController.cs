@@ -13,8 +13,11 @@ namespace CentManagerment.Controllers
 {
     public class HomeController : Controller
     {
+        public static readonly NewsManager newManager = new NewsManager();
+
         public ActionResult Index()
         {
+            ViewBag.ListNews = newManager.GetListNews(); 
             return View();
         }
 

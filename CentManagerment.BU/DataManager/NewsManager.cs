@@ -19,11 +19,11 @@ namespace CentManagerment.BU.DataManager
         {
             db = new CentManagermentEntities();
         }
-        public bool NewsManagerInsert(NewsDTO course)
+        public bool NewsManagerInsert(NewsDTO newdto)
         {
             try
             {
-                return new NewsDAO().Insert(new ConvertDataNews().ConvertDataNewsToEF(course));
+                return new NewsDAO().Insert(new ConvertDataNews().ConvertDataNewsToEF(newdto));
             }
             catch (Exception)
             {
@@ -43,11 +43,24 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
-        public bool NewsManagerDelete(NewsDTO course)
+        //public bool NewsManagerDelete(NewsDTO course)
+        //{
+        //    try
+        //    {
+        //        return new NewsDAO().Delete(new ConvertDataNews().ConvertDataNewsToEF(course));
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return false;
+        //    }
+        //}
+
+        public bool NewsManagerDelete(int idnew)
         {
             try
             {
-                return new NewsDAO().Delete(new ConvertDataNews().ConvertDataNewsToEF(course));
+                return new NewsDAO().Delete(idnew);
             }
             catch (Exception)
             {

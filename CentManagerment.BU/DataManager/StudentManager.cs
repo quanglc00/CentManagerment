@@ -2,6 +2,7 @@
 using CentManagerment.BU.DTO;
 using CentManagerment.Model.DAO;
 using CentManagerment.Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,19 +80,24 @@ namespace CentManagerment.BU.DataManager
         }
 
 
-        public List<StudentDTO> GetListStudents()
+        public IEnumerable<StudentDTO> GetListStudents(string searchString, int page, int pageSize)
         {
             var listStudents = new List<Student>();
             using (var db = new CentManagermentEntities())
             {
                 listStudents = db.Students.ToList();
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    listStudents = listStudents.Where(x => x.StudentName.Contains(searchString) || x.StudentEmail.Contains(searchString)
+                    || x.StudentAdress.Contains(searchString)).ToList();
+                }
             }
             var listStudentsDTO = new List<StudentDTO>();
             foreach (var st in listStudents)
             {
                 listStudentsDTO.Add(new ConvertDataStudent().ConvertDataStudentToDTO(st));
             }
-            return listStudentsDTO;
+            return listStudentsDTO.ToPagedList(page, pageSize);
         }
 
         #endregion

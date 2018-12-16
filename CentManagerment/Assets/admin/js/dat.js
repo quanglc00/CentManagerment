@@ -80,8 +80,47 @@
         return false;
     });
 
-    $('.icon-menu').click(function () {
-        //alert("Hi");
+    $('#btn--save-new').click(function () {
+        var newdto = {
+            NewsContent: /*$('#main-content').val(),*/ CKEDITOR.instances['main-content'].getData(),
+            NewsShortContent: $('#short-content').val(),
+            NewsTitle: $('#new-title').val()
+        };
+        $.ajax({
+            url: "/News/AddNews",
+            type: "POST",
+            data: { newdto: newdto },
+            success: function (resultCode) {
+                if (resultCode === 1) {
+                    alert("Thêm tin tức thành công!");
+                    window.location.reload();
+                } else {
+                    alert("Đã sảy ra lỗi khi thêm!");
+                    return false;
+                }
+            }
+        });
+    });
+
+
+    $('.xoatt').click(function () {
+        var getidnew = this.id;
+        var idnew = getidnew.substring(4, this.id.length);
+
+        $.ajax({
+            url: "/News/DeleteNew",
+            type: "POST",
+            data: { idnew: idnew },
+            success: function (resultCode) {
+                if (resultCode === 1) {
+                    alert("Xóa tin tức thành công!");
+                    window.location.reload();
+                } else {
+                    alert("Đã sảy ra lỗi khi xóa!");
+                    return false;
+                }
+            }
+        });
     });
     //$('#addst').click(function () {
     //    var stdto = {

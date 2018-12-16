@@ -70,10 +70,11 @@
     <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NewsShortContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="NewsPostDate" Type="DateTime" Precision="0" />
+    <Property Name="NewsPostDate" Type="DateTime" Precision="3" />
     <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NewsUserID" Type="Int32" />
     <NavigationProperty Name="UserManager" Relationship="CentManagermentModel.FK_News_Users" FromRole="News" ToRole="UserManager" />
+    <Property Name="NewsAvatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Revenue">
     <Key>
@@ -124,9 +125,13 @@
     <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TeacherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
     <Property Name="TimeToWork" Type="Int32" />
     <Property Name="PricePerHour" Type="Int32" />
     <Property Name="LevelEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="UserManager">
     <Key>
@@ -136,7 +141,7 @@
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UserType" Type="Int32" />
-    <Property Name="FullName" Type="String" MaxLength="69" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
   </EntityType>

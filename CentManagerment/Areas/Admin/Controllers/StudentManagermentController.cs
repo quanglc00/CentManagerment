@@ -14,9 +14,9 @@ namespace CentManagerment.Areas.Admin.Controllers
 
         readonly StudentManager studentMange = new StudentManager();
         // GET: Admin/StudentManagerment
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 3)
         {
-            var listStudents = studentMange.GetListStudents();
+            var listStudents = studentMange.GetListStudents(searchString, page, pageSize);
             return View(listStudents);
         }
 

@@ -4748,7 +4748,7 @@ label.error {
 }
 
 .edit-post__sidebar--linkimage input {
-  width: 30px;
+  /*width: 30px;*/
 }
 
 .cancel {

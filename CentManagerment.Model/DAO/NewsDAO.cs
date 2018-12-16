@@ -40,14 +40,33 @@ namespace CentManagerment.Model.DAO
 
         }
         // use using to open and close connection
-        public bool Delete(News news)
+        //public bool Delete(News news)
+        //{
+        //    using (db = new CentManagermentEntities())
+        //    {
+        //        db.News.Remove(news);
+        //        db.SaveChanges();
+        //    }
+        //    return true;
+
+        //}
+        public bool Delete(int idnew)
         {
-            using (db = new CentManagermentEntities())
+            try
             {
-                db.News.Remove(news);
-                db.SaveChanges();
+                using (db = new CentManagermentEntities())
+                {
+                    var getNew = db.News.Find(idnew);
+                    db.News.Remove(getNew);
+                    db.SaveChanges();
+                }
+                return true;
             }
-            return true;
+            catch (Exception)
+            {
+                return false;
+            }
+
 
         }
     }

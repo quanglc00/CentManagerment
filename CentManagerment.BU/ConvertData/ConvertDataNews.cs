@@ -19,8 +19,8 @@ namespace CentManagerment.BU.ConvertData
                 NewsPostDate = news.NewsPostDate,
                 NewsShortContent = news.NewsShortContent,
                 NewsTitle = news.NewsTitle,
-                NewsUserID = news.NewsUserID,
-                UserManagerDTO = new ConvertDataUserManager().ConvertDataUserManagerToDTO(news.UserManager)
+                NewsUserID = news.NewsUserID
+                //UserManagerDTO = new ConvertDataUserManager().ConvertDataUserManagerToDTO(news.UserManager)
             };
             return newsDTO;
         }
