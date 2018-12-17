@@ -1,6 +1,6 @@
-﻿
-
-
+﻿@{ 
+    var sessionRole = (List<int>)Session[CentManagerment.BU.Common.CommonUserLogin.USER_LISTROLE];
+}
 <!-- Mixins-->
 <!-- Start: table-bnqc-->
 <!-- End: table-bnqc-->
@@ -59,6 +59,9 @@
     AdminLTE Skins. Choose a skin from the css/skins
     folder instead of downloading all of them to reduce the load.
     -->
+    <link rel="stylesheet" href="/Assets/admin/libs/editor/summernote.css" />
+    <script src="~/Assets/content/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/content/ckfinder/ckfinder.js"></script>
     <link rel="stylesheet" href="~/Assets/admin/libs/skins/_all-skins.min.css" />
     <!-- jquery-ui-->
     <link rel="stylesheet" href="~/Assets/admin/libs/datepicker/jquery-ui.theme.css" />
@@ -219,7 +222,6 @@
                 </div>
             </nav>
         </header>
-        </header>
         <!--#header-->
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less-->
@@ -243,7 +245,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less-->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="treeview"><a href="#"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                    <li class="treeview"><a href="~/Admin/HomeAdmin"><i class="fa fa-dashboard"></i><span>Trang Chủ</span></a></li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-files-o"></i><span>Quản lý học sinh</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                         <ul class="treeview-menu">
@@ -260,8 +262,8 @@
                     <li class="treeview">
                         <a href="#"><i class="fa fa-th"></i><span>Tin tức</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i>Tất cả các bài viết</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>Thêm mới tin tức</a></li>
+                            <li><a href="@Url.Action("Index", "News")"><i class="fa fa-circle-o"></i>Tất cả các bài viết</a></li>
+                            <li><a href="@Url.Action("AddMews", "News")"><i class="fa fa-circle-o"></i>Thêm mới tin tức</a></li>
                         </ul>
                     </li>
                     <li class="treeview"><a href="/Admin/TeacherManagerment/Index"><i class="fa fa-user"></i><span>Quản lý giáo viên</span></a></li>
@@ -279,20 +281,49 @@
                             <li><a href="#"><i class="fa fa-circle-o"></i>Doanh thu từng lớp</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-user"></i><span>Nhân viên</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/Employee"><i class="fa fa-circle-o"></i>Tất cả nhân viên</a></li>
-                            <li><a href="/Admin/Employee/InsertEmployee"><i class="fa fa-circle-o"></i>Thêm nhân viên</a></li>
-                            <li><a href="/Admin/Employee/DecentralizationEmployee"><i class="fa fa-circle-o"></i>Phân quyền</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-folder"></i><span>Thiết lập</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href="thietlap.html"><i class="fa fa-circle-o"></i>Tổng quan</a></li>
-                        </ul>
-                    </li>
+<<<<<<< HEAD
+                    @*@if (sessionRole.Contains(7))
+                        {
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-user"></i><span>Nhân viên</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="/Admin/Employee"><i class="fa fa-circle-o"></i>Tất cả nhân viên</a></li>
+                                    <li><a href="/Admin/Employee/InsertEmployee"><i class="fa fa-circle-o"></i>Thêm nhân viên</a></li>
+                                    <li><a href="/Admin/Employee/DecentralizationEmployee"><i class="fa fa-circle-o"></i>Phân quyền</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else if (sessionRole.Contains(8))
+                        {
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-folder"></i><span>Thiết lập</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="thietlap.html"><i class="fa fa-circle-o"></i>Tổng quan</a></li>
+                                </ul>
+                            </li>
+                        }*@
+=======
+                    @if (sessionRole.Contains(7))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-user"></i><span>Nhân viên</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/Employee"><i class="fa fa-circle-o"></i>Tất cả nhân viên</a></li>
+                                <li><a href="/Admin/Employee/InsertEmployee"><i class="fa fa-circle-o"></i>Thêm nhân viên</a></li>
+                                <li><a href="/Admin/Employee/DecentralizationEmployee"><i class="fa fa-circle-o"></i>Phân quyền</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains(8))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-folder"></i><span>Thiết lập</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="thietlap.html"><i class="fa fa-circle-o"></i>Tổng quan</a></li>
+                            </ul>
+                        </li>
+                    }
+>>>>>>> 42cdcefb849be44888b54eef3a748591d55ee88e
                 </ul>
             </section>
             <!-- /.sidebar-->
@@ -328,19 +359,15 @@
     <script src="~/Assets/admin/libs/adminlte/adminlte.min.js"></script>
     <script src="~/Assets/admin/libs/validation/validation.js"></script>
     <script src="~/Assets/admin/js/validation.js"></script>
-<<<<<<< HEAD
-    <!-- AdminLTE for demo purposes-->
-    <script src="~/Assets/admin/js/script.js"></script>
-    <script src="~/Assets/admin/js/ajaxTeacher.js"></script>
-=======
+    <script src="~/Assets/notify.js"></script>
     @*<script src="~/Assets/admin/js/JavaScript.js"></script>*@
     @*<script src="~/Assets/admin/js/validation.js"></script>*@
     <script src="~/Assets/admin/js/dat.js"></script>
     <!-- AdminLTE for demo purposes-->
     <script src="~/Assets/admin/js/script.js"></script>
     <script src="~/Assets/ClassJs.js"></script>
+    <script src="~/Assets/admin/js/ajaxTeacher.js"></script>
     <script src="~/Assets/admin/js/Quangjs.js"></script>
 
->>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
 </body>
 </html>
