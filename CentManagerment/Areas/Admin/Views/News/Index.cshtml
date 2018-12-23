@@ -82,7 +82,7 @@
         <tr>
             <th>Mã tin tức</th>
             <th>Tiêu đề tin</th>
-            <th>Ngày đăng</th>
+            <th>Thời gian đăng</th>
             <th>Người đăng</th>
             <th>Tùy chọn</th>
         </tr>
@@ -91,13 +91,13 @@
             <tr>
                 <td id="idtt-@tt.NewsId">@tt.NewsId</td>
                 <td><a href="#" target="_blank">@tt.NewsTitle</a></td>
-                <td><abbr title="07/12/2017">@tt.NewsPostDate.Value.ToString("dd/MM/yyyy")</abbr></td>
-                <td>@tt.NewsUserID</td>
+                <td><abbr>@tt.NewsPostDate.Value.ToString()</abbr></td>
+                <td>@tt.NewsNameUserPost</td>
                 <td>
                     <span class="icon-menu">
                         <i class="fa fa-plus-circle"></i>
                         <ul>
-                            <li><a href="/admin/news/fix-news/news-@tt.NewsId">Chỉnh sửa</a></li>
+                            <li><a href="@Url.Action("UpdateNew", "News", new { idNews = tt.NewsId })">Chỉnh sửa</a></li>
                             <li class="xoatt" id="xoa-@tt.NewsId">Xóa</li>
                         </ul>
                     </span>

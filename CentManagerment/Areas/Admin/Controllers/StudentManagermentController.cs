@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class StudentManagermentController : Controller
+    public class StudentManagermentController : BaseController
     {
 
         readonly StudentManager studentMange = new StudentManager();

@@ -29,10 +29,9 @@ namespace CentManagerment.Model.DAO
             {
                 var newsUpdate = db.News.FirstOrDefault(x => x.NewsId == news.NewsId);
                 newsUpdate.NewsContent = news.NewsContent;
-                newsUpdate.NewsPostDate = news.NewsPostDate;
                 newsUpdate.NewsShortContent = news.NewsShortContent;
                 newsUpdate.NewsTitle = news.NewsTitle;
-                newsUpdate.NewsUserID = news.NewsUserID;
+                newsUpdate.NewsAvatar = news.NewsAvatar;
                 db.SaveChanges();
             }
             return true;

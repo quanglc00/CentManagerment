@@ -14,7 +14,12 @@ namespace CentManagerment.BU.DTO
         public DateTime? NewsPostDate { get; set; }
         public string NewsTitle { get; set; }
         public int? NewsUserID { get; set; }
+        public string NewsAvatar { get; set; }
+        public string NewsNameUserPost { get; set; }
+
 
         public virtual UserManagerDTO UserManagerDTO { get; set; }
+
+
     }
 }

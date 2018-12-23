@@ -1,10 +1,10 @@
-﻿
+﻿@model  CentManagerment.BU.DTO.NewsDTO
+@using CentManagerment.BU.DataManager
 @{
-    ViewBag.Title = "Thêm bài viết tin tức";
+    ViewBag.Title = "Sửa bài viết tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@*<div class="content-wrapper">*@
 <section class="edit-post" id="edit-post">
     <div class="content-header content-header-wrap">
         <h1 class="fleft">Thêm bài viết</h1>
@@ -12,19 +12,20 @@
         <div class="clear-fix"></div>
     </div>
     <!--.content-header-wrap-->
+    @Html.Hidden("IdTT", Model.NewsId)
     <div class="content-main">
         <div class="edit-post__content fleft">
             <div class="edit-post__import">
                 <div class="edit-post__import--title">
-                    <input type="text" name="edit-title" id="new-title" placeholder="Nhập tiêu đề tại đây" />
+                    <input type="text" name="edit-title" id="new-title" placeholder="Nhập tiêu đề tại đây" value="@Model.NewsTitle" />
                 </div>
                 <div class="edit-post__import--desc">
                     <legend>Mô tả ngắn</legend>
-                    <textarea name="edit-desc" cols="30" rows="10" id="short-content"></textarea>
+                    <textarea name="edit-desc" cols="30" rows="10" id="short-content">@Model.NewsShortContent</textarea>
                 </div>
                 <div class="edit-post__import--ckeditor">
                     <legend>Mô tả chi tiết</legend>
-                    <textarea name="main-content" cols="30" rows="10" id="main-content"></textarea>
+                    <textarea name="main-content" cols="30" rows="10" id="main-content">@Model.NewsContent</textarea>
                     <script>
                         CKEDITOR.replace("main-content");
                     </script>
@@ -42,7 +43,7 @@
                 </div>
                 <div class="edit-post__sidebar--linkimage">
                     <label for="avatar">Đặt ảnh đại diện</label>
-                    <img src="" id="avatar-news" />
+                    <img src="@Model.NewsAvatar" id="avatar-news" />
                     <input type="file" name="avatar" id="avatar-button">
                 </div>
             </div>
@@ -57,6 +58,3 @@
     </div>
 
 </section>
-@*</div>*@
-
-

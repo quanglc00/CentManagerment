@@ -31,11 +31,11 @@ namespace CentManagerment.BU.DataManager
                 return false;
             }
         }
-        public bool NewsManagerUpdate(NewsDTO course)
+        public bool NewsManagerUpdate(NewsDTO newdto)
         {
             try
             {
-                return new NewsDAO().Update(new ConvertDataNews().ConvertDataNewsToEF(course));
+                return new NewsDAO().Update(new ConvertDataNews().ConvertDataNewsToEF(newdto));
             }
             catch (Exception)
             {
@@ -76,7 +76,7 @@ namespace CentManagerment.BU.DataManager
             List<News> listNews = new List<News>();
             using (var db = new CentManagermentEntities())
             {
-                listNews = db.News.ToList();
+                listNews = db.News.OrderBy(x=>x.NewsPostDate).ToList();
 
             }
             foreach (var n in listNews)
@@ -86,6 +86,22 @@ namespace CentManagerment.BU.DataManager
             return listNewsDTO;
         }
 
+
+        public NewsDTO getNewById(int id)
+        {
+            NewsDTO NewsDTO = new NewsDTO();
+            News News = new News();
+            using (var db = new CentManagermentEntities())
+            {
+                News = db.News.Find(id);
+
+            }
+            if (News != null)
+                NewsDTO = convertData.ConvertDataNewsToDTO(News);
+            else
+                NewsDTO = null;
+            return NewsDTO;
+        }
 
         public IEnumerable<NewsDTO> GetListNews(string searchString, int page, int pageSize)
         {
