@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\ClassManagermentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseManagermentController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FourZeroOneController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Common\RoleAttribute.cs" />
@@ -3113,6 +3114,7 @@
     <Content Include="Assets\content\ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\News\SuaBaiVietTinTuc.cshtml" />
     <Content Include="Areas\Admin\Views\News\UpdateNew.cshtml" />
+    <Content Include="Areas\Admin\Views\FourZeroOne\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3144,6 +3146,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\ForZeroOne\" />
     <Folder Include="Assets\admin\fonts\" />
     <Folder Include="Assets\content\files\" />
     <Folder Include="Assets\content\images\" />

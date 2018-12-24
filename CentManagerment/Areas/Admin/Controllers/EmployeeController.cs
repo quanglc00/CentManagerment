@@ -10,27 +10,24 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
+    [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
     public class EmployeeController : BaseController
     {
         // GET: Employee
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public ActionResult Index()
         {
                 ViewBag.ListUser = new UserManagerManager().GetListUserManagers();
                 return View();
         }
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public ActionResult InsertEmployee()
         {
             return View();
         }
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public ActionResult DecentralizationEmployee()
         {
             ViewBag.ListUser = new UserManagerManager().GetListUserManagers();
             return View();
         }
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         [HttpPost]
         public JsonResult UpdateUser(UserManagerDTO userManager)
         {
@@ -39,7 +36,6 @@ namespace CentManagerment.Areas.Admin.Controllers
                 resultCode = true;
             return Json(resultCode, JsonRequestBehavior.AllowGet);
         }
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public JsonResult AddUser(UserManagerDTO userManager)
         {
             var list = new UserManagerManager().GetListUserManagers();
@@ -61,7 +57,6 @@ namespace CentManagerment.Areas.Admin.Controllers
             }
             return Json(resultCode, JsonRequestBehavior.AllowGet);
         }
-        [Role(RoleID = (int)CommonEnum.Role.Quanlynhanvien)]
         public JsonResult DeleteUser(UserManagerDTO userManager)
         {
             bool resultCode = false;

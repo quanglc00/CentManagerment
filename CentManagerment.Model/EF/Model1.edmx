@@ -38,10 +38,10 @@
           <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NewsContent" Type="ntext" />
           <Property Name="NewsShortContent" Type="ntext" />
-          <Property Name="NewsPostDate" Type="datetime" />
+          <Property Name="NewsPostDate" Type="date" />
           <Property Name="NewsTitle" Type="nvarchar" MaxLength="100" />
           <Property Name="NewsUserID" Type="int" />
-          <Property Name="NewsAvatar" Type="nvarchar" MaxLength="500" />
+          <Property Name="NewsAvatar" Type="ntext" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -304,11 +304,11 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NewsShortContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NewsPostDate" Type="DateTime" Precision="3" />
+          <Property Name="NewsPostDate" Type="DateTime" Precision="0" />
           <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NewsUserID" Type="Int32" />
+          <Property Name="NewsAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserManager" Relationship="CentManagermentModel.FK_News_Users" FromRole="News" ToRole="UserManager" />
-          <Property Name="NewsAvatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Revenue">
           <Key>
@@ -458,7 +458,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

@@ -41,5 +41,10 @@ namespace CentManagerment.Areas.Admin.Controllers
                 return Redirect("/Admin/Login");
             }
         }
+        public ActionResult SignOut()
+        {
+            Session.Remove(CommonUserLogin.USER_SESSION);
+            return Redirect("/Admin/Login");
+        }
     }
 }

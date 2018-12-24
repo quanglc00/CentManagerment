@@ -1,5 +1,7 @@
 ﻿@{ 
+    var sessionUser = (CentManagerment.BU.DTO.UserManagerDTO) Session[CentManagerment.BU.Common.CommonUserLogin.USER_SESSION];
     var sessionRole = (List<int>)Session[CentManagerment.BU.Common.CommonUserLogin.USER_LISTROLE];
+    var type = "";
 }
 <!-- Mixins-->
 <!-- Start: table-bnqc-->
@@ -202,17 +204,26 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less-->
                         <li class="dropdown user user-menu">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"><img class="user-image" src="~/Assets/admin/images/user2-160x160.jpg" alt="User Image" /><span class="hidden-xs">Alexander Pierce</span></a>
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"><img class="user-image" src="~/Assets/admin/images/user2-160x160.jpg" alt="User Image" /><span class="hidden-xs">@sessionUser.FullName</span></a>
                             <ul class="dropdown-menu">
                                 <!-- User image-->
                                 <li class="user-header">
                                     <img class="img-circle" src="~/Assets/admin/images/user2-160x160.jpg" alt="User Image" />
-                                    <p>Vũ Văn Huy<small>Vũ Văn Huy - Admin</small></p>
+                                    @if (@sessionUser.UserType == 1)
+                                    {
+                                        type = "Người Quản Trị";
+                                    }
+                                    else{
+                                        type = "Nhân Viên";
+                                    }
+                                    <p>@sessionUser.FullName<small>@sessionUser.UserName - @type</small></p>
                                 </li>
                                 <!-- Menu Body-->
                                 <li class="user-footer">
                                     <div class="pull-left"><a class="btn btn-default btn-flat" href="#">Hồ sơ</a></div>
-                                    <div class="pull-right"><a class="btn btn-default btn-flat" href="#">Đăng xuất</a></div>
+                                    <form id="form1" action="~/Login/SignOut" method="post">
+                                        <div class="pull-right"><a class="btn btn-default btn-flat" href="javascript:;" onclick="document.getElementById('form1').submit()">Đăng xuất</a></div>
+                                    </form>
                                 </li>
                             </ul>
                         </li>
