@@ -11,8 +11,8 @@
             StudentEmail: $('#stmail-' + idhs).val(),
             StudentMark: $('#stmark-' + idhs).val(),
             StudentSchoolFee: $('#stschoolfee-' + idhs).val(),
+            StudentSchoolFeeStatus: $('#ststatus-' + idhs).val(),
         };
-        console.log(stdto);
         $.ajax({
             url: "/StudentManagerment/UpdateStudent",
             type: "POST",
@@ -32,7 +32,6 @@
     $('.deleteuser').click(function () {
         var getidhs = this.id;
         var idhs = getidhs.substring(11, this.id.length);
-
         $.ajax({
             url: "/StudentManagerment/DeleteStudent",
             type: "POST",
@@ -57,6 +56,7 @@
             StudentEmail: $('#stmail').val(),
             StudentMark: $('#stmark').val(),
             StudentSchoolFee: $('#stschoolfee').val(),
+            StudentSchoolFeeStatus: $('#ststatus').val(),
         };
         $.ajax({
             url: "/StudentManagerment/AddNewStudent",

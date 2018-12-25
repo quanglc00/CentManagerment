@@ -79,9 +79,9 @@ namespace CentManagerment.BU.DataManager
                 listCourse = db.Courses.ToList();
                 if(!String.IsNullOrEmpty(searchString))
                 {
-                    listCourse = db.Courses.Where(x => x.CourseName.Contains(searchString) ||
-                    x.CourseTime.Contains(searchString) ||
-                    x.CousePrice.ToString().Contains(searchString)).ToList();
+                    listCourse = db.Courses.Where(x => x.CourseName.Contains(searchString)
+                    //x.CourseTime.Contains(searchString) ||
+                    /*x.CousePrice.ToString().Contains(searchString)*/).ToList();
                 }
                 foreach (var item in listCourse)
                 {

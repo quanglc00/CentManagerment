@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CentManagermentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CentManagermentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ClassId" />
@@ -19,9 +19,11 @@
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
-          <Property Name="CourseTime" Type="nvarchar" MaxLength="100" />
-          <Property Name="CousePrice" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Expenditure">
           <Key>
@@ -93,6 +95,8 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
           <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
           <Property Name="StudentAdress" Type="ntext" />
+          <Property Name="StudentSchoolFeeStatus" Type="bit" />
+          <Property Name="StudentSchoolFeeDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -108,6 +112,19 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="PricePerHour" Type="int" />
           <Property Name="LevelEducation" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayDate" Type="datetime" />
+          <Property Name="PayStatus" Type="bit" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="UserManager">
           <Key>
@@ -198,6 +215,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <EntitySet Name="RoleManager" EntityType="Self.RoleManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserManager" EntityType="Self.UserManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegisterManagerment" EntityType="Self.RegisterManagerment" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -230,43 +248,11 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CentManagermentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Classes" EntityType="CentManagermentModel.Class" />
-          <EntitySet Name="Courses" EntityType="CentManagermentModel.Course" />
-          <EntitySet Name="Expenditures" EntityType="CentManagermentModel.Expenditure" />
-          <EntitySet Name="News" EntityType="CentManagermentModel.News" />
-          <EntitySet Name="Revenues" EntityType="CentManagermentModel.Revenue" />
-          <EntitySet Name="Roles" EntityType="CentManagermentModel.Role" />
-          <EntitySet Name="RoleManagers" EntityType="CentManagermentModel.RoleManager" />
-          <EntitySet Name="Students" EntityType="CentManagermentModel.Student" />
-          <EntitySet Name="Teachers" EntityType="CentManagermentModel.Teacher" />
-          <EntitySet Name="UserManagers" EntityType="CentManagermentModel.UserManager" />
-          <EntitySet Name="RegisterManagerments" EntityType="CentManagermentModel.RegisterManagerment" />
-          <AssociationSet Name="FK_Classes_Courses" Association="CentManagermentModel.FK_Classes_Courses">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="Class" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Students_Classes" Association="CentManagermentModel.FK_Students_Classes">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Revenue_Expenditure" Association="CentManagermentModel.FK_Revenue_Expenditure">
-            <End Role="Expenditure" EntitySet="Expenditures" />
-            <End Role="Revenue" EntitySet="Revenues" />
-          </AssociationSet>
-          <AssociationSet Name="FK_News_Users" Association="CentManagermentModel.FK_News_Users">
-            <End Role="UserManager" EntitySet="UserManagers" />
-            <End Role="News" EntitySet="News" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Revenues_Students" Association="CentManagermentModel.FK_Revenues_Students">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="Revenue" EntitySet="Revenues" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ClassId" />
@@ -275,18 +261,20 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ClassAmountStudent" Type="Int32" />
           <Property Name="ClassCourseId" Type="Int32" />
-          <NavigationProperty Name="Course" Relationship="CentManagermentModel.FK_Classes_Courses" FromRole="Class" ToRole="Course" />
-          <NavigationProperty Name="Students" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Class" ToRole="Student" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Classes_Courses" FromRole="Class" ToRole="Course" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classes" FromRole="Class" ToRole="Student" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CourseTime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CousePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Classes" Relationship="CentManagermentModel.FK_Classes_Courses" FromRole="Course" ToRole="Class" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Courses" FromRole="Course" ToRole="Class" />
         </EntityType>
         <EntityType Name="Expenditure">
           <Key>
@@ -295,7 +283,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="ExpenditureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExpenditureName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
-          <NavigationProperty Name="Revenues" Relationship="CentManagermentModel.FK_Revenue_Expenditure" FromRole="Expenditure" ToRole="Revenue" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenue_Expenditure" FromRole="Expenditure" ToRole="Revenue" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -308,7 +296,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="NewsTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NewsUserID" Type="Int32" />
           <Property Name="NewsAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserManager" Relationship="CentManagermentModel.FK_News_Users" FromRole="News" ToRole="UserManager" />
+          <NavigationProperty Name="UserManager" Relationship="Self.FK_News_Users" FromRole="News" ToRole="UserManager" />
         </EntityType>
         <EntityType Name="Revenue">
           <Key>
@@ -319,8 +307,8 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="RevenuePrice" Type="Int32" />
           <Property Name="RevenueStudentId" Type="Int32" />
           <Property Name="ExpenditureId" Type="Int32" />
-          <NavigationProperty Name="Expenditure" Relationship="CentManagermentModel.FK_Revenue_Expenditure" FromRole="Revenue" ToRole="Expenditure" />
-          <NavigationProperty Name="Student" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Revenue" ToRole="Student" />
+          <NavigationProperty Name="Expenditure" Relationship="Self.FK_Revenue_Expenditure" FromRole="Revenue" ToRole="Expenditure" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Revenues_Students" FromRole="Revenue" ToRole="Student" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -349,8 +337,10 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="StudentPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="StudentAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Class" Relationship="CentManagermentModel.FK_Students_Classes" FromRole="Student" ToRole="Class" />
-          <NavigationProperty Name="Revenues" Relationship="CentManagermentModel.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
+          <Property Name="StudentSchoolFeeStatus" Type="Boolean" />
+          <Property Name="StudentSchoolFeeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Students_Classes" FromRole="Student" ToRole="Class" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenues_Students" FromRole="Student" ToRole="Revenue" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -367,6 +357,19 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="LevelEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
         </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayDate" Type="DateTime" Precision="3" />
+          <Property Name="PayStatus" Type="Boolean" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="UserManager">
           <Key>
             <PropertyRef Name="UserId" />
@@ -377,7 +380,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="UserType" Type="Int32" />
           <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="UserPhoneNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="News" Relationship="CentManagermentModel.FK_News_Users" FromRole="UserManager" ToRole="News" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Users" FromRole="UserManager" ToRole="News" />
         </EntityType>
         <EntityType Name="RegisterManagerment">
           <Key>
@@ -391,10 +394,10 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <Property Name="register_status" Type="Int32" />
         </EntityType>
         <Association Name="FK_Classes_Courses">
-          <End Type="CentManagermentModel.Course" Role="Course" Multiplicity="0..1">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="CentManagermentModel.Class" Role="Class" Multiplicity="*" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Course">
               <PropertyRef Name="CourseId" />
@@ -405,10 +408,10 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Students_Classes">
-          <End Type="CentManagermentModel.Class" Role="Class" Multiplicity="0..1">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="CentManagermentModel.Student" Role="Student" Multiplicity="*" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Class">
               <PropertyRef Name="ClassId" />
@@ -419,8 +422,8 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Revenue_Expenditure">
-          <End Type="CentManagermentModel.Expenditure" Role="Expenditure" Multiplicity="0..1" />
-          <End Type="CentManagermentModel.Revenue" Role="Revenue" Multiplicity="*" />
+          <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="0..1" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Expenditure">
               <PropertyRef Name="ExpenditureId" />
@@ -431,10 +434,10 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_News_Users">
-          <End Type="CentManagermentModel.UserManager" Role="UserManager" Multiplicity="0..1">
+          <End Role="UserManager" Type="Self.UserManager" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="CentManagermentModel.News" Role="News" Multiplicity="*" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserManager">
               <PropertyRef Name="UserId" />
@@ -445,10 +448,10 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Revenues_Students">
-          <End Type="CentManagermentModel.Student" Role="Student" Multiplicity="0..1">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="CentManagermentModel.Revenue" Role="Revenue" Multiplicity="*" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="StudentId" />
@@ -458,6 +461,40 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="CentManagermentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Expenditures" EntityType="Self.Expenditure" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Revenues" EntityType="Self.Revenue" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="RoleManagers" EntityType="Self.RoleManager" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="UserManagers" EntityType="Self.UserManager" />
+          <EntitySet Name="RegisterManagerments" EntityType="Self.RegisterManagerment" />
+          <AssociationSet Name="FK_Classes_Courses" Association="Self.FK_Classes_Courses">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classes" Association="Self.FK_Students_Classes">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Expenditure" Association="Self.FK_Revenue_Expenditure">
+            <End Role="Expenditure" EntitySet="Expenditures" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Users" Association="Self.FK_News_Users">
+            <End Role="UserManager" EntitySet="UserManagers" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenues_Students" Association="Self.FK_Revenues_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -467,124 +504,142 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
           <EntitySetMapping Name="Classes">
             <EntityTypeMapping TypeName="CentManagermentModel.Class">
               <MappingFragment StoreEntitySet="Class">
-                <ScalarProperty Name="ClassCourseId" ColumnName="ClassCourseId" />
-                <ScalarProperty Name="ClassAmountStudent" ColumnName="ClassAmountStudent" />
-                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
                 <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassAmountStudent" ColumnName="ClassAmountStudent" />
+                <ScalarProperty Name="ClassCourseId" ColumnName="ClassCourseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="CentManagermentModel.Course">
               <MappingFragment StoreEntitySet="Course">
-                <ScalarProperty Name="CousePrice" ColumnName="CousePrice" />
-                <ScalarProperty Name="CourseTime" ColumnName="CourseTime" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expenditures">
             <EntityTypeMapping TypeName="CentManagermentModel.Expenditure">
               <MappingFragment StoreEntitySet="Expenditure">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ExpenditureName" ColumnName="ExpenditureName" />
                 <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
+                <ScalarProperty Name="ExpenditureName" ColumnName="ExpenditureName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="CentManagermentModel.News">
               <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="NewsAvatar" ColumnName="NewsAvatar" />
-                <ScalarProperty Name="NewsUserID" ColumnName="NewsUserID" />
-                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
-                <ScalarProperty Name="NewsPostDate" ColumnName="NewsPostDate" />
-                <ScalarProperty Name="NewsShortContent" ColumnName="NewsShortContent" />
-                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
                 <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="NewsContent" ColumnName="NewsContent" />
+                <ScalarProperty Name="NewsShortContent" ColumnName="NewsShortContent" />
+                <ScalarProperty Name="NewsPostDate" ColumnName="NewsPostDate" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="NewsUserID" ColumnName="NewsUserID" />
+                <ScalarProperty Name="NewsAvatar" ColumnName="NewsAvatar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Revenues">
             <EntityTypeMapping TypeName="CentManagermentModel.Revenue">
               <MappingFragment StoreEntitySet="Revenue">
-                <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
-                <ScalarProperty Name="RevenueStudentId" ColumnName="RevenueStudentId" />
-                <ScalarProperty Name="RevenuePrice" ColumnName="RevenuePrice" />
-                <ScalarProperty Name="RevenueStartPaymentDay" ColumnName="RevenueStartPaymentDay" />
                 <ScalarProperty Name="RevenueId" ColumnName="RevenueId" />
+                <ScalarProperty Name="RevenueStartPaymentDay" ColumnName="RevenueStartPaymentDay" />
+                <ScalarProperty Name="RevenuePrice" ColumnName="RevenuePrice" />
+                <ScalarProperty Name="RevenueStudentId" ColumnName="RevenueStudentId" />
+                <ScalarProperty Name="ExpenditureId" ColumnName="ExpenditureId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="CentManagermentModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RoleManagers">
             <EntityTypeMapping TypeName="CentManagermentModel.RoleManager">
               <MappingFragment StoreEntitySet="RoleManager">
-                <ScalarProperty Name="RoleManagerRoleId" ColumnName="RoleManagerRoleId" />
-                <ScalarProperty Name="RoleManagerUserId" ColumnName="RoleManagerUserId" />
                 <ScalarProperty Name="RoleManagerId" ColumnName="RoleManagerId" />
+                <ScalarProperty Name="RoleManagerUserId" ColumnName="RoleManagerUserId" />
+                <ScalarProperty Name="RoleManagerRoleId" ColumnName="RoleManagerRoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="CentManagermentModel.Student">
               <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
-                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
-                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
-                <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
-                <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
-                <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
-                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentMark" ColumnName="StudentMark" />
+                <ScalarProperty Name="StudentClassID" ColumnName="StudentClassID" />
+                <ScalarProperty Name="StudentSchoolFee" ColumnName="StudentSchoolFee" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+                <ScalarProperty Name="StudentAdress" ColumnName="StudentAdress" />
+                <ScalarProperty Name="StudentSchoolFeeStatus" ColumnName="StudentSchoolFeeStatus" />
+                <ScalarProperty Name="StudentSchoolFeeDate" ColumnName="StudentSchoolFeeDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teachers">
             <EntityTypeMapping TypeName="CentManagermentModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="LevelEducation" ColumnName="LevelEducation" />
-                <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
-                <ScalarProperty Name="TimeToWork" ColumnName="TimeToWork" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
                 <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TimeToWork" ColumnName="TimeToWork" />
+                <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
+                <ScalarProperty Name="LevelEducation" ColumnName="LevelEducation" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="CentManagermentModel.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserManagers">
             <EntityTypeMapping TypeName="CentManagermentModel.UserManager">
               <MappingFragment StoreEntitySet="UserManager">
-                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RegisterManagerments">
             <EntityTypeMapping TypeName="CentManagermentModel.RegisterManagerment">
               <MappingFragment StoreEntitySet="RegisterManagerment">
-                <ScalarProperty Name="register_status" ColumnName="register_status" />
-                <ScalarProperty Name="register_course" ColumnName="register_course" />
-                <ScalarProperty Name="register_email" ColumnName="register_email" />
-                <ScalarProperty Name="register_phone" ColumnName="register_phone" />
-                <ScalarProperty Name="register_name" ColumnName="register_name" />
                 <ScalarProperty Name="register_id" ColumnName="register_id" />
+                <ScalarProperty Name="register_name" ColumnName="register_name" />
+                <ScalarProperty Name="register_phone" ColumnName="register_phone" />
+                <ScalarProperty Name="register_email" ColumnName="register_email" />
+                <ScalarProperty Name="register_course" ColumnName="register_course" />
+                <ScalarProperty Name="register_status" ColumnName="register_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

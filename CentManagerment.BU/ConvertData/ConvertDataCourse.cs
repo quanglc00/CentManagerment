@@ -16,8 +16,8 @@ namespace CentManagerment.BU.ConvertData
             {
                 CourseId = course.CourseId,
                 CourseName = course.CourseName,
-                CourseTime = course.CourseTime,
-                CousePrice = course.CousePrice
+                //CourseTime = course.CourseTime,
+                //CousePrice = course.CousePrice
             };
             return courseDTO;
         }
@@ -26,8 +26,8 @@ namespace CentManagerment.BU.ConvertData
             var courseEF = new Course()
             {
                 CourseName = courseDTO.CourseName,
-                CousePrice = courseDTO.CousePrice,
-                CourseTime = courseDTO.CourseTime,
+                //CousePrice = courseDTO.CousePrice,
+                //CourseTime = courseDTO.CourseTime,
             };
             if (courseDTO.CourseId > 0)
             {
