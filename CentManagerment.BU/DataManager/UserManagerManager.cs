@@ -1,4 +1,5 @@
-﻿using CentManagerment.BU.ConvertData;
+﻿using CentManagerment.BU.Common;
+using CentManagerment.BU.ConvertData;
 using CentManagerment.BU.DTO;
 using CentManagerment.Model.DAO;
 using CentManagerment.Model.EF;
@@ -28,17 +29,12 @@ namespace CentManagerment.BU.DataManager
                 {
                     foreach (var item in listRole)
                     {
-                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                            new RoleManagerDTO { RoleManagerUserId = userId, RoleManagerRoleId = item.RoleId }));
+                        new RoleManagerManager().RoleManagerManagerInsert(new RoleManagerDTO { RoleManagerUserId = userId, RoleManagerRoleId = item.RoleId });
                     }
                 }
                 else
                 {
-                    for (int i = 1; i < 7; i++)
-                    {
-                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                            new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = i }));
-                    }
+                    new RoleManagerManager().RoleManagerManagerInsert(new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = 1 });
                 }
                 return true;
             }
@@ -62,8 +58,7 @@ namespace CentManagerment.BU.DataManager
                     }
                     foreach (var item in listRole)
                     {
-                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                            new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = item.RoleId }));
+                        new RoleManagerManager().RoleManagerManagerInsert(new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = item.RoleId });
                     }
                 }
                 else
@@ -73,11 +68,8 @@ namespace CentManagerment.BU.DataManager
                     {
                         new RoleManagerManager().RoleManagerManagerDelete(item);
                     }
-                    for (int i = 1; i < 7; i++)
-                    {
-                        new RoleManagerDAO().Insert(new ConvertDataRoleManager().ConvertDataRoleManagerToEF(
-                            new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = i }));
-                    }
+                    new RoleManagerManager().RoleManagerManagerInsert(
+                        new RoleManagerDTO { RoleManagerUserId = UserManager.UserId, RoleManagerRoleId = 1 });
                 }
                 return true;
             }
@@ -91,7 +83,7 @@ namespace CentManagerment.BU.DataManager
         {
             try
             {
-                new UserManagerDAO().Delete(new ConvertDataUserManager().ConvertDataUserManagerToEF(UserManager));
+                new UserManagerManager().UserManagerManagerDelete(UserManager);
                 var listRoleManagerByUserId = new RoleManagerManager().GetListRoleManagerByUserID(UserManager);
                 foreach (var item in listRoleManagerByUserId)
                 {
@@ -114,6 +106,25 @@ namespace CentManagerment.BU.DataManager
                 foreach (var item in list)
                 {
                     listDTO.Add(new ConvertDataUserManager().ConvertDataUserManagerToDTO(item));
+                }
+                return listDTO;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public List<UserManagerDTO> GetListUserManagersMinusUserLogin(UserManagerDTO UserLogin)
+        {
+            try
+            {
+                var list = db.UserManagers.OrderBy(x=>x.UserType).ToList();
+                var listDTO = new List<UserManagerDTO>();
+                foreach (var item in list)
+                {
+                    if (item.UserId != new ConvertDataUserManager().ConvertDataUserManagerToEF(UserLogin).UserId)
+                        listDTO.Add(new ConvertDataUserManager().ConvertDataUserManagerToDTO(item));
                 }
                 return listDTO;
             }
@@ -161,6 +172,37 @@ namespace CentManagerment.BU.DataManager
             catch (Exception)
             {
                 return null;
+            }
+        }
+        public bool AddUserManagerHandleByUserName(string UserName, List<int> listType)
+        {
+            try
+            {
+                if (UserName != "" && listType != null)
+                {
+                    UserManagerDTO userDTO = new UserManagerDTO();
+                    userDTO = new ConvertDataUserManager().ConvertDataUserManagerToDTO(db.UserManagers.FirstOrDefault(x => x.UserName == UserName));
+                    var listRoleManagerByUserId = new RoleManagerManager().GetListRoleManagerByUserID(userDTO);
+                    foreach (var item in listRoleManagerByUserId)
+                    {
+                        new RoleManagerManager().RoleManagerManagerDelete(item);
+                    }
+                    foreach (var item in listType)
+                    {
+                        new RoleManagerManager().RoleManagerManagerInsert(new RoleManagerDTO { RoleManagerUserId = userDTO.UserId, RoleManagerRoleId = item });
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

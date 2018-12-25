@@ -77,5 +77,6 @@ namespace CentManagerment.BU.DataManager
                        };
             return list.Select(x => x.RoleManagerRoleId.Value).ToList();
         }
+
     }
 }

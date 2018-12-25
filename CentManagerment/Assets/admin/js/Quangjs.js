@@ -32,11 +32,11 @@
         });
     }
 }
-$('.InsertEmployee').on('click',function() {
+$('.InsertEmployee').on('click', function () {
     if ($('.UserType').val() === "" || $('.UserPassword').val() === ""
         || $('.UserName').val() === "" || $('.FullName').val() === ""
         || $('.UserPhoneNumber').val() === "") {
-        alert("Bạn phải chọn/điền thông tin trước khi sửa");
+        alert("Bạn phải chọn/điền thông tin trước khi thêm");
     }
     else if ($('.UserPassword').val() !== $('.RePassword').val())
         alert("Mật khẩu nhập lại phải giống mật khẩu");
@@ -119,3 +119,126 @@ for (let i = 0; i < $('.cancelEditUser').length; i++) {
         });
     });
 }
+$('#btn_EditProfile').on('click', function () {
+    if ($('.UserType').val() === "" || $('.UserPassword').val() === ""
+        || $('.UserName').val() === "" || $('.FullName').val() === ""
+        || $('.UserPhoneNumber').val() === "") {
+        alert("Bạn phải chọn/điền thông tin trước khi cập nhật");
+    }
+    else if ($('.UserPassword').val() !== $('.RePassword').val())
+        alert("Mật khẩu nhập lại phải giống mật khẩu");
+    else if ($('.UserPhoneNumber').val().length > 16) {
+        alert("Số điện thoại từ 16 ký tự trờ xuống");
+    }
+    else {
+        var User = {
+            UserId: $('.UserId').val(),
+            FullName: $('.FullName').val(),
+            UserPhoneNumber: $('.UserPhoneNumber').val(),
+            UserPassword: $('.UserPassword').val(),
+            UserType: $('.UserType').val(),
+            UserName: $('.UserName').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Admin/EditProfile/EditUrProfile",
+            data: { user: User },
+            success: function (resultCode) {
+                if (resultCode) {
+                    alert("Cập Nhật Thành Công!");
+                    window.location.reload();
+                    return true;
+                }
+                else {
+                    alert("Có lỗi khi cập nhật");
+                    return false;
+                }
+            }
+        });
+    }
+});
+var check = false;
+var UserName = "";
+function SelectEmployee(i) {
+    if ($(".radioCheck").get(i).checked) {
+        UserName = $($(".UserName").get(i)).val();
+        check = true;
+    }
+    $.ajax({
+        type: "post",
+        url: "/Admin/Employee/Decentralization",
+        data: { UserName: UserName },
+        success: function (re) {
+            if (re.resultCode) {
+                if (re.listCheck.includes(1)) {
+                    $("#StudentHandle").prop("checked", true);
+                } else {
+                    $("#StudentHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(2)) {
+                    $("#CourseHandle").prop("checked", true);
+                } else {
+                    $("#CourseHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(3)) {
+                    $("#NewsHandle").prop("checked", true);
+                } else {
+                    $("#NewsHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(4)) {
+                    $("#TeacherHandle").prop("checked", true);
+                } else {
+                    $("#TeacherHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(5)) {
+                    $("#SignupHandle").prop("checked", true);
+                } else {
+                    $("#SignupHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(6)) {
+                    $("#RevenueHandle").prop("checked", true);
+                } else {
+                    $("#RevenueHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(7)) {
+                    $("#EmployeeHandle").prop("checked", true);
+                } else {
+                    $("#EmployeeHandle").prop("checked", false);
+                }
+                if (re.listCheck.includes(8)) {
+                    $("#CustomsHandle").prop("checked", true);
+                } else {
+                    $("#CustomsHandle").prop("checked", false);
+                }
+            }
+        }
+    });
+}
+var listType = new Array;
+$("#submitHandle").click(function () {
+    listType = [];
+    for (var i = 0; i < $(".HandlerType").length; i++) {
+        if ($(".HandlerType").get(i).checked) {
+            listType.push(parseInt($($(".HandlerType").get(i)).val()));
+        }
+    }
+    if (check) {
+        console.log(listType);
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Employee/AddHandle",
+            data: { UserName: UserName, listType: listType },
+            success: function (resultCode) {
+                if (resultCode) {
+                    alert("Phân quyền thành công!");
+                    window.location.reload();
+                }
+                else {
+                    alert("Xảy ra lỗi khi phân quyền");
+                }
+            }
+        });
+    } else {
+        alert("Bạn phải chọn nhân viên để phân quyền!");
+    }
+});

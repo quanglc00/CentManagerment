@@ -16,8 +16,9 @@ namespace CentManagerment.Areas.Admin.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-                ViewBag.ListUser = new UserManagerManager().GetListUserManagers();
-                return View();
+            var user = (UserManagerDTO)Session[CentManagerment.BU.Common.CommonUserLogin.USER_SESSION];
+            ViewBag.ListUser = new UserManagerManager().GetListUserManagersMinusUserLogin(user);
+            return View();
         }
         public ActionResult InsertEmployee()
         {
@@ -62,6 +63,26 @@ namespace CentManagerment.Areas.Admin.Controllers
             bool resultCode = false;
             if (new UserManagerManager().UserManagerManagerDelete(userManager))
                 resultCode = true;
+            return Json(resultCode, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Decentralization(string UserName)
+        {
+            bool resultCode = false;
+            List<int> listCheck = null;
+            if(new RoleManagerManager().GetListRoleIdByUserName(UserName)!= null)
+            {
+                listCheck = new RoleManagerManager().GetListRoleIdByUserName(UserName);
+                resultCode = true;
+            }
+            return Json(new { resultCode, listCheck }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult AddHandle(string UserName, List<int> listType)
+        {
+            bool resultCode = false;
+            if(new UserManagerManager().AddUserManagerHandleByUserName(UserName, listType))
+            {
+                resultCode = true;
+            }
             return Json(resultCode, JsonRequestBehavior.AllowGet);
         }
     }

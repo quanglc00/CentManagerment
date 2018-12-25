@@ -1,4 +1,5 @@
-﻿using CentManagerment.BU.DataManager;
+﻿using CentManagerment.Areas.Admin.Common;
+using CentManagerment.BU.DataManager;
 using CentManagerment.BU.DTO;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
+    [Role(RoleID = (int)CommonEnum.Role.Quanlysinhvien)]
     public class StudentManagermentController : BaseController
     {
 

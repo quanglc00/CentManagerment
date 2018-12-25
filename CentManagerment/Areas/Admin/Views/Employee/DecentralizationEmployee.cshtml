@@ -1,8 +1,9 @@
 ﻿
 @{
+    ViewBag.Title = "Phân Quyền";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var listUser = (List<CentManagerment.BU.DTO.UserManagerDTO>)ViewBag.ListUser;
-    var dem = 0;
+    var demclick = 0;
 }
 
 <div class="content-header content-header-wrap">
@@ -17,7 +18,7 @@
                 <table>
                     <tr>
                         <th>
-                            <input class="total-checkbox" id="total-checkbox" type="checkbox" value="total" />
+                            Chọn NV
                         </th>
                         <th>Mã NV</th>
                         <th>Họ Tên</th>
@@ -44,14 +45,16 @@
                             }
                             <tr class="userPanel">
                                 <td>
-                                    <input class="item-checkbox" type="checkbox" value="item" />
+                                    <input class="item-checkbox radioCheck" type="radio" name="Decentralization" value="item" onclick="return SelectEmployee(@demclick)" />
                                 </td>
                                 <td>@item.UserId</td>
                                 <td>@item.FullName</td>
                                 <td>@item.UserName</td>
+                                <input type="hidden" name="name" class="UserName" value="@item.UserName" />
                                 <td>@type</td>
                                 <td>@item.UserPhoneNumber</td>                                
                             </tr>
+                            demclick++;
                         }
                     }
                 </table>
@@ -72,42 +75,47 @@
                 <ul>
                     <li>
                         <label for="StudentHandle">
-                            <input id="StudentHandle" type="checkbox" value="1">Quản lý học sinh
+                            <input id="StudentHandle" class="HandlerType" type="checkbox" value="1">Quản lý học sinh
                         </label>
                     </li>
                     <li>
                         <label for="CourseHandle">
-                            <input id="CourseHandle" type="checkbox" value="2">Quản lý khóa học
+                            <input id="CourseHandle" class="HandlerType" type="checkbox" value="2">Quản lý khóa học
                         </label>
                     </li>
                     <li>
                         <label for="NewsHandle">
-                            <input id="NewsHandle" type="checkbox" value="3">Quản lý tin tức
+                            <input id="NewsHandle" class="HandlerType" type="checkbox" value="3">Quản lý tin tức
                         </label>
                     </li>
                     <li>
                         <label for="TeacherHandle">
-                            <input id="TeacherHandle" type="checkbox" value="4">Quản lý giáo viên
+                            <input id="TeacherHandle" class="HandlerType" type="checkbox" value="4">Quản lý giáo viên
                         </label>
                     </li>
                     <li>
                         <label for="SignupHandle">
-                            <input id="SignupHandle" type="checkbox" value="5">Quản lý đăng ký
+                            <input id="SignupHandle" class="HandlerType" type="checkbox" value="5">Quản lý đăng ký
                         </label>
                     </li>
                     <li>
                         <label for="RevenueHandle">
-                            <input id="RevenueHandle" type="checkbox" value="6">Quản lý doanh thu
+                            <input id="RevenueHandle" class="HandlerType" type="checkbox" value="6">Quản lý doanh thu
                         </label>
                     </li>
                     <li>
                         <label for="EmployeeHandle">
-                            <input id="EmployeeHandle" type="checkbox" value="7">Quản lý nhân viên
+                            <input id="EmployeeHandle" class="HandlerType" type="checkbox" value="7">Quản lý nhân viên
+                        </label>
+                    </li>
+                    <li>
+                        <label for="CustomsHandle">
+                            <input id="CustomsHandle" class="HandlerType" type="checkbox" value="8">Thiết Lập
                         </label>
                     </li>
                 </ul>
             </div>
-            <input type="button" name="name" value="Áp dụng" class="submitHandle" />
+            <input type="button" name="name" value="Áp dụng" id="submitHandle" />
         </div>
         <div class="clearfix"></div>
     </div>

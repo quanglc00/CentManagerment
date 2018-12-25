@@ -1,4 +1,5 @@
 ﻿@{
+    ViewBag.Title = "Danh sách tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var listUser = (List<CentManagerment.BU.DTO.UserManagerDTO>)ViewBag.ListUser;
     var dem = 0;
@@ -23,7 +24,7 @@
         <table>
             <tr>
                 <th>
-                    <input class="total-checkbox" id="total-checkbox" type="checkbox" value="total" />
+                    STT
                 </th>
                 <th>Mã NV</th>
                 <th>Họ Tên</th>
@@ -45,7 +46,7 @@
                 }
                 <tr class="userPanel">
                     <td>
-                        <input class="item-checkbox" type="checkbox" value="item" />
+                        @(dem+1)
                     </td>
                     <td>@item.UserId</td>
                     <td>@item.FullName</td>
