@@ -41,6 +41,9 @@ namespace CentManagerment.Model.DAO
                     studentUpdate.StudentMark = student.StudentMark;
                     studentUpdate.StudentName = student.StudentName;
                     studentUpdate.StudentAdress = student.StudentAdress;
+                    studentUpdate.StudentSchoolFeeStatus = student.StudentSchoolFeeStatus;
+                    studentUpdate.StudentSchoolFeeDate = student.StudentSchoolFeeDate;
+
                     db.SaveChanges();
                     return true;
                 }

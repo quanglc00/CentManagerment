@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assets\content\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -156,12 +160,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SeoFriendlyRoute.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Common\CommonEnum.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClassManagermentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CourseManagermentController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FourZeroOneController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Common\RoleAttribute.cs" />
@@ -2168,6 +2174,7 @@
     <Content Include="Assets\content\ckeditor\skins\moono-lisa\images\refresh.png" />
     <Content Include="Assets\content\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="Assets\content\ckeditor\styles.js" />
+    <Content Include="Assets\content\CKFinder.dll" />
     <Content Include="Assets\content\ckfinder\bin\Debug\CKFinder.dll" />
     <Content Include="Assets\content\ckfinder\bin\Debug\CKFinder.pdb" />
     <Content Include="Assets\content\ckfinder\bin\Debug\CKFinder_FileEditor.dll" />
@@ -2813,75 +2820,6 @@
     <Content Include="Assets\content\ckfinder\skins\v1\skin.js" />
     <Content Include="Assets\content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Assets\content\ckfinder\translations.txt" />
-    <Content Include="Assets\content\images\1-2-1058x554.jpg" />
-    <Content Include="Assets\content\images\1.jpg" />
-    <Content Include="Assets\content\images\1.PNG" />
-    <Content Include="Assets\content\images\111.jpg" />
-    <Content Include="Assets\content\images\111111111.jpg" />
-    <Content Include="Assets\content\images\1186.jpg" />
-    <Content Include="Assets\content\images\1205.jpg" />
-    <Content Include="Assets\content\images\1206.jpg" />
-    <Content Include="Assets\content\images\125.jpg" />
-    <Content Include="Assets\content\images\13612254_299320450413318_1162138814776417805_n.jpg" />
-    <Content Include="Assets\content\images\14068160_655228754642701_3150523664848419275_n.jpg" />
-    <Content Include="Assets\content\images\149.png" />
-    <Content Include="Assets\content\images\1536125701-426-hang-trung-quoc-that-sung-hang-viet-nam-len-ngoi-trong-nam-hoc-moi-nay-gd1-1536122239-width650height488.jpg" />
-    <Content Include="Assets\content\images\16995956_1014776725334086_8818589361871751862_n.jpg" />
-    <Content Include="Assets\content\images\17098288_1014776695334089_8855471514537180108_n.jpg" />
-    <Content Include="Assets\content\images\17426101_1854935901440099_644838293850685916_n.jpg" />
-    <Content Include="Assets\content\images\24058833_2039066149657368_3026492134964184490_n.jpg" />
-    <Content Include="Assets\content\images\26194475_309446029562907_566885135_o.jpg" />
-    <Content Include="Assets\content\images\28ca5bf8705d1cab.jpg" />
-    <Content Include="Assets\content\images\41927448_589714711456949_1881393531906424832_n.jpg" />
-    <Content Include="Assets\content\images\4878d8ee655f1c94.jpg" />
-    <Content Include="Assets\content\images\4987b3b54b538e4c.jpg" />
-    <Content Include="Assets\content\images\6e34d956a2c99a93.jpg" />
-    <Content Include="Assets\content\images\7a3ca79878c99435.jpg" />
-    <Content Include="Assets\content\images\831e503dd7c79c23.jpg" />
-    <Content Include="Assets\content\images\a.jpg" />
-    <Content Include="Assets\content\images\aaron-burden-286686-unsplash.jpg" />
-    <Content Include="Assets\content\images\avatar.jpg" />
-    <Content Include="Assets\content\images\background-1.jpg" />
-    <Content Include="Assets\content\images\batdongsan.com.gif" />
-    <Content Include="Assets\content\images\bien.png" />
-    <Content Include="Assets\content\images\biệt thự.PNG" />
-    <Content Include="Assets\content\images\brighton_pier_sunset-wallpaper-1366x768.jpg" />
-    <Content Include="Assets\content\images\Buổi 3.1.jpg" />
-    <Content Include="Assets\content\images\can ho.jpg" />
-    <Content Include="Assets\content\images\Capture.PNG" />
-    <Content Include="Assets\content\images\ccb22cccc27cb6a6.jpg" />
-    <Content Include="Assets\content\images\chum-anh-wallpaper-de-tai-cong-nghe-danh-cho-may-tinh-cua-ban.jpg" />
-    <Content Include="Assets\content\images\coffee_break-wallpaper-1366x768.jpg" />
-    <Content Include="Assets\content\images\dat.png" />
-    <Content Include="Assets\content\images\dog_face_wind_glasses_96452_1366x768.jpg" />
-    <Content Include="Assets\content\images\dream_home-wallpaper-1366x768.jpg" />
-    <Content Include="Assets\content\images\DSCF7016.JPG" />
-    <Content Include="Assets\content\images\DSCF7019.JPG" />
-    <Content Include="Assets\content\images\E6o8v3Z.jpg" />
-    <Content Include="Assets\content\images\hehe.jpg" />
-    <Content Include="Assets\content\images\hinh-anh-bien-dep-nhat-the-gioi-3.jpg" />
-    <Content Include="Assets\content\images\icon hoi đáp.jpg" />
-    <Content Include="Assets\content\images\images.jpg" />
-    <Content Include="Assets\content\images\IMG20170430104050.jpg" />
-    <Content Include="Assets\content\images\IMG20170430104617.jpg" />
-    <Content Include="Assets\content\images\IMG20170430104619.jpg" />
-    <Content Include="Assets\content\images\kerbal_space_program_art_spacesuit_management_102393_1366x768.jpg" />
-    <Content Include="Assets\content\images\laptop_cup_glasses_plant_114948_1366x768.jpg" />
-    <Content Include="Assets\content\images\logo.png" />
-    <Content Include="Assets\content\images\photo1536553839511-15365538395111405196678.jpg" />
-    <Content Include="Assets\content\images\qc.PNG" />
-    <Content Include="Assets\content\images\quảng cáo triuyeefn thông.PNG" />
-    <Content Include="Assets\content\images\ScreenShot_20180730081402.png" />
-    <Content Include="Assets\content\images\space-wallpaper-%2817%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%282%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%2829%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%283%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%2836%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%2840%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%288%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\space-wallpaper-%289%29-by-twalls.jpg" />
-    <Content Include="Assets\content\images\tải xuống.jpg" />
-    <Content Include="Assets\content\images\xabMPj.gif" />
     <Content Include="Assets\content\uploadimages\logo2HLHJ.jpg" />
     <Content Include="Assets\content\uploadimages\logo63Z6V.jpg" />
     <Content Include="Assets\content\uploadimages\logoAQTUM.jpg" />
@@ -3174,6 +3112,9 @@
     <Content Include="Assets\content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Assets\content\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\News\SuaBaiVietTinTuc.cshtml" />
+    <Content Include="Areas\Admin\Views\News\UpdateNew.cshtml" />
+    <Content Include="Areas\Admin\Views\FourZeroOne\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3199,13 +3140,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\DetailsNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\ForZeroOne\" />
     <Folder Include="Assets\admin\fonts\" />
     <Folder Include="Assets\content\files\" />
+    <Folder Include="Assets\content\images\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Course\" />
   </ItemGroup>

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class StudentManagermentController : Controller
+    public class StudentManagermentController : BaseController
     {
 
         readonly StudentManager studentMange = new StudentManager();
@@ -32,6 +32,9 @@ namespace CentManagerment.Areas.Admin.Controllers
         public JsonResult UpdateStudent(StudentDTO stdto)
         {
             var resultCode = 0;
+            var getStudent = studentMange.GetInfoStudent(stdto.StudentId);
+            if ((getStudent.StudentSchoolFeeDate == null && stdto.StudentSchoolFee > 0))
+                stdto.StudentSchoolFeeDate = DateTime.Now;
             var resultUpdate = studentMange.StudentManagerUpdate(stdto);
             if (resultUpdate)
                 resultCode = 1;
@@ -59,6 +62,10 @@ namespace CentManagerment.Areas.Admin.Controllers
             }
             else
             {
+                if (stdto.StudentSchoolFee > 0)
+                {
+                    stdto.StudentSchoolFeeDate = DateTime.Now;
+                }
                 var resultUpdate = studentMange.StudentManagerInsert(stdto);
                 if (resultUpdate)
                     resultCode = 1;

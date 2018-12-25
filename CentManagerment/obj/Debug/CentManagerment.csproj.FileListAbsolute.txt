@@ -102,3 +102,4 @@ C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment\obj\Deb
 C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment\obj\Debug\CentManagerment.csproj.CopyComplete
 C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment\obj\Debug\CentManagerment.dll
 C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment\obj\Debug\CentManagerment.pdb
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment\bin\CKFinder.dll

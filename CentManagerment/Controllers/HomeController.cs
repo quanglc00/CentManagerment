@@ -36,6 +36,23 @@ namespace CentManagerment.Controllers
         }
 
 
+        // Trang chi tiết
+        public ActionResult DetailsNew(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var getTinTuc = newManager.getNewById((int)id);
+            if (getTinTuc == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(getTinTuc);
+        }
+
+
         //send mail
 
         [HttpPost]

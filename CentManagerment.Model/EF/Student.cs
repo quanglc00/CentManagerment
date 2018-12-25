@@ -28,6 +28,8 @@ namespace CentManagerment.Model.EF
         public string StudentEmail { get; set; }
         public string StudentPhone { get; set; }
         public string StudentAdress { get; set; }
+        public Nullable<bool> StudentSchoolFeeStatus { get; set; }
+        public Nullable<System.DateTime> StudentSchoolFeeDate { get; set; }
     
         public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,5 @@
-﻿using CentManagerment.BU.DTO;
+﻿using CentManagerment.BU.DataManager;
+using CentManagerment.BU.DTO;
 using CentManagerment.Model.EF;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,16 @@ namespace CentManagerment.BU.ConvertData
                 NewsPostDate = news.NewsPostDate,
                 NewsShortContent = news.NewsShortContent,
                 NewsTitle = news.NewsTitle,
-                NewsUserID = news.NewsUserID
-                //UserManagerDTO = new ConvertDataUserManager().ConvertDataUserManagerToDTO(news.UserManager)
+                NewsUserID = news.NewsUserID,
+                NewsAvatar = news.NewsAvatar
+                //UserManagerDTO = new ConvertDataUserManager().ConvertDataUserManagerToDTO(news.UserManager),
+                //NameUserPost = new ConvertDataUserManager().ConvertDataUserManagerToDTO(news.UserManager).UserName
             };
+            if(news.NewsUserID != null)
+            {
+                newsDTO.UserManagerDTO = new UserManagerManager().FindUserById((int)news.NewsUserID);
+                newsDTO.NewsNameUserPost = new UserManagerManager().FindUserById((int)news.NewsUserID).UserName;
+            }
             return newsDTO;
         }
         public News ConvertDataNewsToEF(NewsDTO news)
@@ -33,6 +41,7 @@ namespace CentManagerment.BU.ConvertData
                 NewsShortContent = news.NewsShortContent,
                 NewsTitle = news.NewsTitle,
                 NewsUserID = news.NewsUserID,
+                NewsAvatar = news.NewsAvatar
             };
             if(news.NewsId > 0)
             {

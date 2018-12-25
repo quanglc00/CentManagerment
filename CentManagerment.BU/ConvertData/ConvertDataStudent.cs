@@ -21,7 +21,9 @@ namespace CentManagerment.BU.ConvertData
                 StudentAdress = student.StudentAdress,
                 StudentEmail = student.StudentEmail,
                 StudentSchoolFee = student.StudentSchoolFee,
-                StudentPhone = student.StudentPhone
+                StudentPhone = student.StudentPhone,
+                StudentSchoolFeeDate = student.StudentSchoolFeeDate,
+                StudentSchoolFeeStatus = student.StudentSchoolFeeStatus
             };
             if(student.Class != null)
             {
@@ -40,7 +42,9 @@ namespace CentManagerment.BU.ConvertData
                 StudentAdress = studentDTO.StudentAdress,
                 StudentEmail = studentDTO.StudentEmail,
                 StudentPhone = studentDTO.StudentPhone,
-                StudentSchoolFee = studentDTO.StudentSchoolFee
+                StudentSchoolFee = studentDTO.StudentSchoolFee,
+                StudentSchoolFeeDate = studentDTO.StudentSchoolFeeDate,
+                StudentSchoolFeeStatus = studentDTO.StudentSchoolFeeStatus
             };
             if(studentDTO.StudentMark == null)
             {

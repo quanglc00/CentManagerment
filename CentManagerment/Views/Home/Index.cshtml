@@ -219,17 +219,25 @@
                     {
                         <div class="single-blog single-popular-carusel">
                             <div class="thumb">
-                                <img class="img-fluid" src="~/Assets/client/img/b1.jpg" alt="">
+                                @if (string.IsNullOrEmpty(newdto.NewsAvatar))
+                                {
+
+                                    <img class="img-fluid" src=" ~/Assets/client/img/b1.jpg" alt="" style="height: 180px;">
+                                }
+                                else
+                                {
+                                    <img class="img-fluid" src="@newdto.NewsAvatar" alt="" style="height: 180px;">
+                                }
                             </div>
-                            <p class="meta">@newdto.NewsPostDate | By <a href="#">Mark Wiens</a></p>
-                            <a href="blog-single.html">
+                            <p class="meta">@newdto.NewsPostDate || By @newdto.NewsNameUserPost</p>
+                            <a href="@Url.Action("DetailsNew", "Home", new { id = Common.GenerateUrl.GenerateSlug(newdto.NewsTitle, newdto.NewsId) })">
                                 <h5>@newdto.NewsTitle</h5>
                             </a>
                             <p>
                                 @newdto.NewsShortContent
                             </p>
-                            <a href="#" class="details-btn d-flex justify-content-center align-items-center">
-                                <span class="details">Details</span><span class="lnr lnr-arrow-right"></span>
+                            <a href="@Url.Action("DetailsNew", "Home", new { id = Common.GenerateUrl.GenerateSlug(newdto.NewsTitle, newdto.NewsId) })" class="details-btn d-flex justify-content-center align-items-center">
+                                <span class="details">Chi tiết</span><span class="lnr lnr-arrow-right"></span>
                             </a>
                         </div>
                     }

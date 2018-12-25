@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace CentManagerment.Areas.Admin.Common
 {
@@ -17,7 +18,9 @@ namespace CentManagerment.Areas.Admin.Common
         {
             var session = (UserManagerDTO)HttpContext.Current.Session[CommonUserLogin.USER_SESSION];
             if (session == null)
-                return false;
+            {
+                return true ;
+            }
             List<int> listRole = this.GetRoleBySessionLogin(session.UserName);
             if (listRole.Contains(this.RoleID))
             {
@@ -25,6 +28,11 @@ namespace CentManagerment.Areas.Admin.Common
             }
             else
                 return false;
+        }
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { Controller = "FourZeroOne", action = "Index", Area = "Admin" }));
         }
         private List<int> GetRoleBySessionLogin(string userName)
         {

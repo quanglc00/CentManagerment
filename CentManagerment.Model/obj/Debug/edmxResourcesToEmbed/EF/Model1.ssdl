@@ -14,9 +14,11 @@
       <PropertyRef Name="CourseId" />
     </Key>
     <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
-    <Property Name="CourseTime" Type="nvarchar" MaxLength="100" />
-    <Property Name="CousePrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Expenditure">
     <Key>
@@ -36,6 +38,7 @@
     <Property Name="NewsPostDate" Type="date" />
     <Property Name="NewsTitle" Type="nvarchar" MaxLength="100" />
     <Property Name="NewsUserID" Type="int" />
+    <Property Name="NewsAvatar" Type="ntext" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -87,6 +90,8 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
     <Property Name="StudentEmail" Type="varchar" MaxLength="100" />
     <Property Name="StudentPhone" Type="varchar" MaxLength="11" />
     <Property Name="StudentAdress" Type="ntext" />
+    <Property Name="StudentSchoolFeeStatus" Type="bit" />
+    <Property Name="StudentSchoolFeeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Teacher">
     <Key>
@@ -102,6 +107,19 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
     <Property Name="PricePerHour" Type="int" />
     <Property Name="LevelEducation" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayDate" Type="datetime" />
+    <Property Name="PayStatus" Type="bit" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="UserManager">
     <Key>
@@ -192,6 +210,7 @@ warning 6002: The table/view 'CentManagerment.dbo.RegisterManagerment' does not 
     <EntitySet Name="RoleManager" EntityType="Self.RoleManager" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserManager" EntityType="Self.UserManager" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegisterManagerment" EntityType="Self.RegisterManagerment" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

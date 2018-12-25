@@ -16,6 +16,8 @@ namespace CentManagerment.BU.DTO
         public string StudentEmail { get; set; }
         public string StudentPhone { get; set; }
         public string StudentAdress { get; set; }
+        public bool? StudentSchoolFeeStatus { get; set; }
+        public DateTime? StudentSchoolFeeDate { get; set; }
 
         public virtual ClassDTO ClassDTO { get; set; }
     }

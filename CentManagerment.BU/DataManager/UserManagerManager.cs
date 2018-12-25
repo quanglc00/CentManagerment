@@ -141,5 +141,27 @@ namespace CentManagerment.BU.DataManager
                 return null;
             }
         }
+
+
+
+        public UserManagerDTO FindUserById(int idUser)
+        {
+            try
+            {
+                var user = new UserManager();
+                user = db.UserManagers.Find(idUser);
+                if (user != null)
+                {
+                    var userFind = new ConvertDataUserManager().ConvertDataUserManagerToDTO(user);
+                    return userFind;
+                }
+                else
+                    return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

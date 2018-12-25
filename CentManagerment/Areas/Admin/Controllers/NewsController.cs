@@ -1,11 +1,12 @@
-﻿using CentManagerment.BU.DataManager;
+﻿using CentManagerment.BU.Common;
+using CentManagerment.BU.DataManager;
 using CentManagerment.BU.DTO;
 using System;
 using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
         public static readonly NewsManager newManager = new NewsManager();
 
@@ -30,9 +31,11 @@ namespace CentManagerment.Areas.Admin.Controllers
         }
 
         [ValidateInput(false)]
-        public JsonResult AddNews(NewsDTO newdto)
+        public JsonResult AddNews(NewsDTO newdto, int? type)
         {
             var resultCode = 0;
+            var resultUpdate = true;
+            var session = (UserManagerDTO)Session[CommonUserLogin.USER_SESSION];
             if (string.IsNullOrEmpty(newdto.NewsContent) || string.IsNullOrEmpty(newdto.NewsShortContent) || string.IsNullOrEmpty(newdto.NewsTitle))
             {
                 //Hãy nhập đủ thông tin yêu cầu
@@ -40,18 +43,31 @@ namespace CentManagerment.Areas.Admin.Controllers
             }
             else
             {
-                newdto.NewsPostDate = DateTime.Now;
-                var resultUpdate = newManager.NewsManagerInsert(newdto);
+                if(type == null)
+                {
+                    newdto.NewsPostDate = DateTime.Now;
+                    newdto.NewsUserID = session.UserId;
+                    resultUpdate = newManager.NewsManagerInsert(newdto);
+                }
+                else
+                {
+                    newdto.NewsId = (int)type;
+                    var getNew = newManager.getNewById((int)type);
+                    newdto.NewsPostDate = getNew.NewsPostDate;
+                    newdto.NewsUserID = getNew.NewsUserID;
+                    resultUpdate = newManager.NewsManagerUpdate(newdto);
+
+                }
                 if (resultUpdate)
                     resultCode = 1;
             }
 
             return Json(resultCode, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult SuaBaiVietTinTuc(int idNews)
-        //{
-        //    var getTT = new BangTinManager().GetTinTucById(idNews);
-        //    return View(getTT);
-        //}
+        public ActionResult UpdateNew(int idNews)
+        {
+            var getTT =newManager.getNewById(idNews);
+            return View(getTT);
+        }
     }
 }

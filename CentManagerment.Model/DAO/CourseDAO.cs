@@ -29,8 +29,8 @@ namespace CentManagerment.Model.DAO
             {
                 var courseUpdate = db.Courses.FirstOrDefault(x=>x.CourseId == course.CourseId);
                 courseUpdate.CourseName = course.CourseName;
-                courseUpdate.CourseTime = course.CourseTime;
-                courseUpdate.CousePrice = course.CousePrice;
+                //courseUpdate.CourseTime = course.CourseTime;
+                //courseUpdate.CousePrice = course.CousePrice;
                 db.SaveChanges();
             }
             return true;
