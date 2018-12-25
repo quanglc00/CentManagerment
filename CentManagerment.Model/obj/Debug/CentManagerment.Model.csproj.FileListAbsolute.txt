@@ -1,0 +1,16 @@
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll.config
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\PagedList.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\PagedList.Mvc.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.xml
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\PagedList.xml
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\bin\Debug\PagedList.Mvc.xml
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CoreCompileInputs.cache
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csproj.CopyComplete
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.dll
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.pdb
+C:\Users\Simplify V2\Desktop\TTTN\finish\CentManagerment\CentManagerment.Model\obj\Debug\CentManagerment.Model.csprojAssemblyReference.cache
