@@ -1,4 +1,5 @@
-﻿using CentManagerment.BU.Common;
+﻿using CentManagerment.Areas.Admin.Common;
+using CentManagerment.BU.Common;
 using CentManagerment.BU.DataManager;
 using CentManagerment.BU.DTO;
 using System;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace CentManagerment.Areas.Admin.Controllers
 {
+    [Role(RoleID = (int)CommonEnum.Role.Quanlytintuc)]
     public class NewsController : BaseController
     {
         public static readonly NewsManager newManager = new NewsManager();

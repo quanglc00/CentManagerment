@@ -72,7 +72,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <div id="wrapper">
         <header id="header" class="main-header">
-            <!-- Logo--><a class="logo" href="../index2.html">
+            <!-- Logo--><a class="logo" href="@Url.Action("Index","HomeAdmin")">
                 <!-- mini logo for sidebar mini 50x50 pixels--><span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices--><span class="logo-lg"><b>Admin</b>LTE</span>
             </a>
@@ -220,7 +220,7 @@
                                 </li>
                                 <!-- Menu Body-->
                                 <li class="user-footer">
-                                    <div class="pull-left"><a class="btn btn-default btn-flat" href="#">Hồ sơ</a></div>
+                                    <div class="pull-left"><a class="btn btn-default btn-flat" href="@Url.Action("Index","EditProfile")">Hồ sơ</a></div>
                                     <form id="form1" action="~/Login/SignOut" method="post">
                                         <div class="pull-right"><a class="btn btn-default btn-flat" href="javascript:;" onclick="document.getElementById('form1').submit()">Đăng xuất</a></div>
                                     </form>
@@ -256,62 +256,81 @@
                 <!-- sidebar menu: : style can be found in sidebar.less-->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="treeview"><a href="~/Admin/HomeAdmin"><i class="fa fa-dashboard"></i><span>Trang Chủ</span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-files-o"></i><span>Quản lý học sinh</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "StudentManagerment")"><i class="fa fa-circle-o"></i> Danh sách học sinh</a></li>
-                            <li><a href="@Url.Action("AddStudent", "StudentManagerment")"><i class="fa fa-circle-o"></i> Thêm học sinh</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-files-o"></i><span>Quản lý khóa học</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href="_tr-tu-khoa.html"><i class="fa fa-circle-o"></i> Thêm khóa học</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-th"></i><span>Tin tức</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "News")"><i class="fa fa-circle-o"></i>Tất cả các bài viết</a></li>
-                            <li><a href="@Url.Action("AddMews", "News")"><i class="fa fa-circle-o"></i>Thêm mới tin tức</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview"><a href="/Admin/TeacherManagerment/Index"><i class="fa fa-user"></i><span>Quản lý giáo viên</span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-edit"></i><span>Quản lý đăng ký</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href=""><i class="fa fa-circle-o"></i>Tẩ cả đăng ký</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-folder"></i><span>Quản lý doanh thu</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                        <ul class="treeview-menu">
-                            <li><a href=""><i class="fa fa-circle-o"></i>Doanh thu theo tháng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>Tổng doanh thu</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i>Doanh thu từng lớp</a></li>
-                        </ul>
-                    </li>
-                    @*@if (sessionRole.Contains(7))
-                        {
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-user"></i><span>Nhân viên</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                                <ul class="treeview-menu">
-                                    <li><a href="/Admin/Employee"><i class="fa fa-circle-o"></i>Tất cả nhân viên</a></li>
-                                    <li><a href="/Admin/Employee/InsertEmployee"><i class="fa fa-circle-o"></i>Thêm nhân viên</a></li>
-                                    <li><a href="/Admin/Employee/DecentralizationEmployee"><i class="fa fa-circle-o"></i>Phân quyền</a></li>
-                                </ul>
-                            </li>
-                        }
-                    @if (sessionRole.Contains(8))
-                        {
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-folder"></i><span>Thiết lập</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-                                <ul class="treeview-menu">
-                                    <li><a href="thietlap.html"><i class="fa fa-circle-o"></i>Tổng quan</a></li>
-                                </ul>
-                            </li>
-                    }*@
+                    <li><a href="@Url.Action("Index","HomeAdmin")"><i class="fa fa-dashboard"></i>Trang Chủ</a></li>
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlysinhvien))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-files-o"></i><span>Quản lý học sinh</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Index", "StudentManagerment")"><i class="fa fa-circle-o"></i> Danh sách học sinh</a></li>
+                                <li><a href="@Url.Action("AddStudent", "StudentManagerment")"><i class="fa fa-circle-o"></i> Thêm học sinh</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlykhoahoc))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-files-o"></i><span>Quản lý khóa học</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="_tr-tu-khoa.html"><i class="fa fa-circle-o"></i> Thêm khóa học</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlytintuc))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-th"></i><span>Tin tức</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="@Url.Action("Index", "News")"><i class="fa fa-circle-o"></i>Tất cả các bài viết</a></li>
+                                <li><a href="@Url.Action("AddMews", "News")"><i class="fa fa-circle-o"></i>Thêm mới tin tức</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlygiaovien))
+                    {
+                        <li class="treeview"><a href="/Admin/TeacherManagerment/Index"><i class="fa fa-user"></i><span>Quản lý giáo viên</span></a></li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlydangky))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-edit"></i><span>Quản lý đăng ký</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href=""><i class="fa fa-circle-o"></i>Tẩ cả đăng ký</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlydoanhthu))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-folder"></i><span>Quản lý doanh thu</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href=""><i class="fa fa-circle-o"></i>Doanh thu theo tháng</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Tổng doanh thu</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i>Doanh thu từng lớp</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlynhanvien))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-user"></i><span>Nhân viên</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="/Admin/Employee"><i class="fa fa-circle-o"></i>Tất cả nhân viên</a></li>
+                                <li><a href="/Admin/Employee/InsertEmployee"><i class="fa fa-circle-o"></i>Thêm nhân viên</a></li>
+                                <li><a href="/Admin/Employee/DecentralizationEmployee"><i class="fa fa-circle-o"></i>Phân quyền</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlytuychinh))
+                    {
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-folder"></i><span>Thiết lập</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                            <ul class="treeview-menu">
+                                <li><a href="thietlap.html"><i class="fa fa-circle-o"></i>Tổng quan</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </section>
             <!-- /.sidebar-->
