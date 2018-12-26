@@ -10,31 +10,41 @@ namespace CentManagerment.BU.ConvertData
 {
     public class ConvertDataRevenue
     {
-        public RevenueDTO ConvertDataRevenueToDTO(Revenue revenue)
+        public List<RevenueDTO> ConvertDataRevenueToDTO(List<Student> listStudent)
         {
-            var revenueDTO = new RevenueDTO()
+            var listST =
+                from student in listStudent
+                group student by student.StudentClassID;
+
+            var listRevenueDTO = new List<RevenueDTO>();
+            foreach(var newGroup in listST)
             {
-                RevenueId = revenue.RevenueId,
-                RevenuePrice = revenue.RevenuePrice,
-                RevenueStartPaymentDay = revenue.RevenueStartPaymentDay,
-                RevenueStudentId = revenue.RevenueStudentId,
-                StudentDTO = new ConvertDataStudent().ConvertDataStudentToDTO(revenue.Student)
-            };
-            return revenueDTO;
-        }
-        public Revenue ConvertDataRevenueToEF(RevenueDTO revenueDTO)
-        {
-            var revenueEF = new Revenue()
-            {
-                RevenuePrice = revenueDTO.RevenuePrice,
-                RevenueStartPaymentDay = revenueDTO.RevenueStartPaymentDay,
-                RevenueStudentId = revenueDTO.RevenueStudentId
-            };
-            if(revenueDTO.RevenueId > 0)
-            {
-                revenueEF.RevenueId = revenueDTO.RevenueId;
+                var nameClass = newGroup.FirstOrDefault().Class.ClassName;
+                var totalPrice = newGroup.FirstOrDefault().Class.ClassAmountStudent * newGroup.FirstOrDefault().Class.Course.Price;
+                var finishPrice = 0;
+                foreach(var st in newGroup)
+                {
+                    if(st.StudentSchoolFeeStatus == true)
+                    {
+                        finishPrice += (int)st.StudentSchoolFee;
+                    }
+                }
+                var inDebt = (int)totalPrice - finishPrice;
+                RevenueDTO revenue = new RevenueDTO()
+                {
+                    ClassName = nameClass,
+                    FinishPrice = finishPrice,
+                    InDebt = inDebt,
+                    TotalPrice = (int)totalPrice
+                };
+                if(revenue != null)
+                {
+                    listRevenueDTO.Add(revenue);
+                }
             }
-            return revenueEF;
+            return listRevenueDTO;
         }
+
+        
     }
 }

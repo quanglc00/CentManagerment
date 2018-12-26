@@ -99,5 +99,7 @@ namespace CentManagerment.BU.DataManager
                 return new ConvertDataClass().ConvertDataClassToDTO(db.Classes.Find(classId));
             }
         }
+        
+
     }
 }

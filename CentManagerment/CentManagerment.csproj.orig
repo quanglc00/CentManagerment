@@ -204,12 +204,9 @@
     <Content Include="Assets\admin\images\vip1.png" />
     <Content Include="Assets\admin\images\vipd.png" />
     <Content Include="Assets\admin\images\vipdb.png" />
-<<<<<<< HEAD
     <Content Include="Assets\admin\js\ajaxTeacher.js" />
-=======
     <Content Include="Assets\admin\js\dat.js" />
     <Content Include="Assets\admin\js\Quangjs.js" />
->>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
     <Content Include="Assets\admin\js\script.js" />
     <Content Include="Assets\admin\js\validation.js" />
     <Content Include="Assets\admin\libs\abc\jquery.min.js" />
@@ -1855,10 +1852,8 @@
     <Content Include="Assets\admin\libs\jquery-slimscroll\package.json" />
     <Content Include="Assets\admin\libs\jquery-slimscroll\README.md" />
     <Content Include="Areas\Admin\Views\StudentManagerment\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\TeacherManagerment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TeacherManagerment\AddTeacher.cshtml" />
-=======
     <Content Include="Areas\Admin\Views\StudentManagerment\AddStudent.cshtml" />
     <Content Include="Areas\Admin\Views\ClassManagerment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ClassManagerment\InsertView.cshtml" />
@@ -1869,7 +1864,6 @@
     <Content Include="Areas\Admin\Views\Employee\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Employee\InsertEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Employee\DecentralizationEmployee.cshtml" />
->>>>>>> 51d58382ea3719aeb6db11c08f8ba3018af009ce
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1960,10 +1954,4 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
 </Project>

@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Quản lý học sinh || Danh sách học sinh";
     ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var usersession = (CentManagerment.BU.DTO.UserManagerDTO)Session[CentManagerment.BU.Common.CommonUserLogin.USER_SESSION];
 }
 
 @{
@@ -43,6 +44,7 @@
                     <th>Điểm</th>
                     <th>Học phí (VNĐ)</th>
                     <th>Lớp</th>
+                    <th>Xác nhận đóng tiền</th>
                     <th>Tùy chọn</th>
                 </tr>
                 @if (Model != null)
@@ -58,6 +60,16 @@
                             <td>@st.StudentMark</td>
                             <td>@st.StudentSchoolFee</td>
                             <td>@st.StudentClassID</td>
+                            <td>
+                                @if (st.StudentSchoolFeeStatus == true)
+                                {
+                                    <span>Đã nhận</span>
+                                }
+                                else
+                                {
+                                    <span>Chưa nhận</span>
+                                }
+                            </td>
                             <td>
                                 <span class="icon-menu">
                                     <i class="fa fa-plus-circle"></i>
@@ -76,51 +88,70 @@
                                     {
                                         //<form class="form__table--detail" action="">
                                         @Html.AntiForgeryToken()
-                                    <div class="form__table--content">
-                                        <div class="form__table-col-6">
-                                            <label for="">Mã học sinh:</label><span style="font-size: 14px">@st.StudentId</span>
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Họ tên:</label>
-                                            <input type="text" value="@st.StudentName" id="stname-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Địa chỉ:</label>
-                                            <input type="text" value="@st.StudentAdress" id="staddress-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Số điện thoại:</label>
-                                            <input type="text" value="@st.StudentPhone" id="stphone-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Email:</label>
-                                            <input type="text" value="@st.StudentEmail" id="stmail-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Điểm:</label>
-                                            <input type="text" value="@st.StudentMark" id="stmark-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Học phí:</label>
-                                            <input type="text" value="@st.StudentSchoolFee" id="stschoolfee-@st.StudentId">
-                                        </div>
-                                        <div class="form__table-col-6">
-                                            <label for="">Tình trạng:</label>
-                                            <select id="ststatus-@st.StudentId">
-                                                @if (st.StudentSchoolFeeStatus == true)
+                                        <div class="form__table--content">
+                                            <div class="form__table-col-6">
+                                                <label for="">Mã học sinh:</label><span style="font-size: 14px">@st.StudentId</span>
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Họ tên:</label>
+                                                <input type="text" value="@st.StudentName" id="stname-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Địa chỉ:</label>
+                                                <input type="text" value="@st.StudentAdress" id="staddress-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Số điện thoại:</label>
+                                                <input type="text" value="@st.StudentPhone" id="stphone-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Email:</label>
+                                                <input type="text" value="@st.StudentEmail" id="stmail-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Điểm:</label>
+                                                <input type="text" value="@st.StudentMark" id="stmark-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Học phí:</label>
+                                                <input type="text" value="@st.StudentSchoolFee" id="stschoolfee-@st.StudentId">
+                                            </div>
+                                            <div class="form__table-col-6">
+                                                <label for="">Xác nhận nộp tiền:</label>
+                                                @if (usersession.UserType == 1)
                                                 {
-                                                    <option value="false">False</option>
-                                                    <option value="true" selected>True</option>
+                                                    <select id="ststatus-@st.StudentId">
+                                                        @if (st.StudentSchoolFeeStatus == true)
+                                                        {
+                                                            <option value="false">False</option>
+                                                            <option value="true" selected>True</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="false" selected>False</option>
+                                                            <option value="true">True</option>
+                                                        }
+
+                                                    </select>
                                                 }
                                                 else
                                                 {
-                                                    <option value="false" selected>False</option>
-                                                    <option value="true">True</option>
-                                                }
+                                                    <select id="ststatus-@st.StudentId" disabled>
+                                                        @if (st.StudentSchoolFeeStatus == true)
+                                                        {
+                                                            <option value="false">False</option>
+                                                            <option value="true" selected>True</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="false" selected>False</option>
+                                                            <option value="true">True</option>
+                                                        }
 
-                                            </select>
+                                                    </select>
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
                                         <div class="fixed__button text-right">
                                             <input type="button" value="Hủy">
                                             <input type="submit" value="Lưu chỉnh sửa" id="updateuser-@st.StudentId" class="updateuser">

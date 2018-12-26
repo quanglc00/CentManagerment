@@ -8,11 +8,9 @@ namespace CentManagerment.BU.DTO
 {
     public class RevenueDTO
     {
-        public int RevenueId { get; set; }
-        public Nullable<System.DateTime> RevenueStartPaymentDay { get; set; }
-        public Nullable<int> RevenuePrice { get; set; }
-        public Nullable<int> RevenueStudentId { get; set; }
-
-        public virtual StudentDTO StudentDTO { get; set; }
+        public string ClassName { get; set; }
+        public int TotalPrice { get; set; } //Tổng phải thu
+        public int FinishPrice { get; set; } // Đã thu
+        public int InDebt { get; set; } // Chưa thu
     }
 }

@@ -301,7 +301,7 @@
                     }
                     @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlygiaovien))
                     {
-                        <li class="treeview"><a href="/Admin/TeacherManagerment/Index"><i class="fa fa-user"></i><span>Quản lý giáo viên</span></a></li>
+                        <li><a href="/Admin/TeacherManagerment/Index"><i class="fa fa-user"></i><span>Quản lý giáo viên</span></a></li>
                     }
                     @if (sessionRole.Contains((int)CentManagerment.Areas.Admin.Common.CommonEnum.Role.Quanlydangky))
                     {
@@ -317,9 +317,7 @@
                         <li class="treeview">
                             <a href="#"><i class="fa fa-folder"></i><span>Quản lý doanh thu</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
                             <ul class="treeview-menu">
-                                <li><a href=""><i class="fa fa-circle-o"></i>Doanh thu theo tháng</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tổng doanh thu</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Doanh thu từng lớp</a></li>
+                                <li><a href="/Admin/Revenue/RevenueClass"><i class="fa fa-circle-o"></i>Doanh thu từng lớp</a></li>
                             </ul>
                         </li>
                     }

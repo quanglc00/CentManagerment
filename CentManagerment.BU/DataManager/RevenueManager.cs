@@ -17,41 +17,12 @@ namespace CentManagerment.BU.DataManager
         {
             db = new CentManagermentEntities();
         }
-        public bool RevenueManagerInsert(RevenueDTO revenue)
-        {
-            try
-            {
-                return new RevenueDAO().Insert(new ConvertDataRevenue().ConvertDataRevenueToEF(revenue));
-            }
-            catch (Exception)
-            {
-                
-                return false;
-            }
-        }
-        public bool RevenueManagerUpdate(RevenueDTO revenue)
-        {
-            try
-            {
-                return new RevenueDAO().Update(new ConvertDataRevenue().ConvertDataRevenueToEF(revenue));
-            }
-            catch (Exception)
-            {
 
-                return false;
-            }
-        }
-        public bool RevenueManagerDelete(RevenueDTO revenue)
+        public List<RevenueDTO> ListRevenue()
         {
-            try
-            {
-                return new RevenueDAO().Delete(new ConvertDataRevenue().ConvertDataRevenueToEF(revenue));
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
+            List<Student> listStudent = db.Students.ToList();
+            return new ConvertDataRevenue().ConvertDataRevenueToDTO(listStudent);
         }
+
     }
 }
